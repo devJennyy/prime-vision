@@ -13,7 +13,7 @@ A movie streaming and download platform featuring a sleek design, advanced searc
 npm i
 ```
 
-2. Start the development server
+2. Start the development server:
 
 ```bash
 npm run dev
