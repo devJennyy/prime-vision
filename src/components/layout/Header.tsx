@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { logo } from "../../styles/global.styles";
+import { logo } from "../../styles/GlobalStyles";
 import DarkModeToggle from "../ui/DarkModeToggle";
 import { IoSearch } from "react-icons/io5";
 

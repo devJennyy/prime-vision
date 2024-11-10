@@ -1,6 +1,6 @@
 import React from "react";
 import { useDarkMode } from "../../hooks/useDarkMode";
-import "../../css/toggle.css";
+import "../../styles/toggle.css";
 
 const DarkModeToggle: React.FC = () => {
   const [darkMode, setDarkMode] = useDarkMode();
@@ -11,7 +11,7 @@ const DarkModeToggle: React.FC = () => {
 
   return (
     <div className={`root cursor-pointer ${darkMode ? "dark" : "light"}`}>
-      <div className="mode mx-5" onClick={handleToggle}>
+      <div className="mode ml-5 mr-4" onClick={handleToggle}>
         <svg
           className="custom-sun"
           xmlns="http://www.w3.org/2000/svg"
