@@ -17,6 +17,8 @@ module.exports = {
         darkmode: "#16181E",
         primary: "#21242D",
         secondary: "#5CFEF0",
+        white: "#E6E6E5",
+        deepSlate: "#16181E",
       },
     },
   },
