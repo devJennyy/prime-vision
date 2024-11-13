@@ -19,6 +19,11 @@ module.exports = {
         secondary: "#5CFEF0",
         white: "#E6E6E5",
         deepSlate: "#16181E",
+        lightSlate: "#E5E7EB",
+      },
+      borderRadius: {
+        '4xl': '30px',
+        '5xl': '40px',
       },
     },
   },

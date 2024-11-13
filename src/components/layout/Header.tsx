@@ -13,7 +13,7 @@ const Header = () => {
   ];
 
   return (
-    <div className="flex justify-between items-center w-full">
+    <div className="flex justify-between items-center w-full pt-8 pb-16">
       <div className="flex justify-center items-center gap-4">
         {logo}
         <p className="capitalize text-3xl font-semibold dark:text-secondary text-primary">
