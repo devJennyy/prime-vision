@@ -1,6 +1,6 @@
 import Hero from "../components/Home/Hero"
 import Showcase from "../components/Home/Showcase"
-import { popularMoviesData, showcaseData, trendingSeriesData } from "../data/showcasedata"
+import { popularMoviesData, showcaseData, trendingSeriesData } from "../data/showcaseData"
 
 
 const Homepage = () => {
