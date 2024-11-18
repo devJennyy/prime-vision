@@ -1,20 +1,25 @@
 import { FaStar, FaStarHalf } from "react-icons/fa";
 import { LiaDownloadSolid } from "react-icons/lia";
 import { transitionEffect } from "../../styles/GlobalStyles";
+import { IoChevronForward } from "react-icons/io5";
 
 interface Props {
   title: string;
   data: {
-    title: string,
-    rating: string,
-    genre: string,
-    duration: string,
-    imageCover: string,
-    alt: string,
-  }[]
+    title: string;
+    rating: string;
+    genre: string;
+    duration: string;
+    imageCover: string;
+  }[];
+  hasArrow: boolean;
+  isClickable: boolean;
 }
 
-const Showcase = ({ title, data } : Props) => {
+const Showcase = ({ title, data, hasArrow, isClickable }: Props) => {
+  const  handleShowcase = () => {
+    console.log("Show all Movies or Series")
+  }
   const handleDetails = () => {
     console.log("View Movie/Series Details");
   };
@@ -23,7 +28,10 @@ const Showcase = ({ title, data } : Props) => {
   };
   return (
     <div className="flex flex-col items-start w-full mt-16">
-      <p className="text-[1.7rem] font-semibold">{title}</p>
+      <button disabled={!isClickable} onClick={() => handleShowcase ()} className={`flex justify-center items-center gap-3 ${isClickable && `hover:gap-5 hover:text-primary/70 active:text-primary dark:hover:text-white/70 dark:active:text-white`} ${transitionEffect}`}>
+        <p className="text-[1.7rem] font-semibold">{title}</p>
+        {hasArrow && <IoChevronForward size={25}/>}
+      </button>
       <div className="grid grid-cols-4 w-full gap-9 pt-10 z-30">
         {data?.map((data, index) => {
           return (
@@ -66,7 +74,7 @@ const Showcase = ({ title, data } : Props) => {
               </div>
               <img
                 src={data?.imageCover}
-                alt={data?.alt}
+                alt="image-cover"
                 className="w-full h-full object-cover bg-no-repeat rounded-[2rem]"
               />
             </div>

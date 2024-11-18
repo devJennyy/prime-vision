@@ -20,6 +20,7 @@ module.exports = {
         white: "#E6E6E5",
         deepSlate: "#16181E",
         lightSlate: "#E5E7EB",
+        softGray: "#E8E8E8",
       },
       borderRadius: {
         '4xl': '30px',

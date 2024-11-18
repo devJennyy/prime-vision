@@ -1,22 +1,22 @@
-import Hero from "../components/Home/Hero"
-import Showcase from "../components/Home/Showcase"
-import { popularMoviesData, showcaseData, trendingSeriesData } from "../data/showcaseData"
-
+import Hero from "../components/Home/Hero";
+import Showcase from "../components/Home/Showcase";
+import {
+  popularMoviesData,
+  showcaseData,
+  trendingSeriesData,
+} from "../data/showcaseData";
 
 const Homepage = () => {
   return (
-    <div
-      id="homepage"
-      className="flex flex-col"
-    >
+    <div id="homepage" className="flex flex-col">
       <Hero />
       <div className="mb-16">
-      <Showcase title={"You might like"} data={showcaseData} />
-      <Showcase title={"Popular Movies"} data={popularMoviesData} />
-      <Showcase title={"Trending Series"} data={trendingSeriesData} />
+        <Showcase title={"You might like"} data={showcaseData} hasArrow={false} isClickable={false} />
+        <Showcase title={"Popular Movies"} data={popularMoviesData} hasArrow={true} isClickable={true} />
+        <Showcase title={"Trending Series"} data={trendingSeriesData} hasArrow={true} isClickable={true} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Homepage
+export default Homepage;
