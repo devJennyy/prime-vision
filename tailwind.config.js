@@ -18,6 +18,7 @@ module.exports = {
         primary: "#21242D",
         secondary: "#5CFEF0",
         white: "#E6E6E5",
+        nightFall: "#252836",
         deepSlate: "#16181E",
         lightSlate: "#E5E7EB",
         softGray: "#E8E8E8",

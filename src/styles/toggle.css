@@ -1,45 +1,51 @@
 :root {
-    --fill: #E6E6E5; 
-  }
-  
-  .root.light {
-    --fill: #21242D;
-  }
-  
-  html,
-  body,
-  .root {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background 200ms ease-in-out;
-  }
-  
-  .mode {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: scale(3); 
-    transition: background 200ms ease-in-out; 
-  }
-  
-  .mode .custom-sun,
-  .mode .custom-moon {
-    position: absolute; 
-    width: 10px; 
-    height: 10px; 
-    fill: var(--fill); 
-    transition: transform 200ms ease-in-out; 
-    z-index: 1; 
-  }
-  
-  .dark .custom-sun {
-    transform: scale(0.1);
-  }
-  
+  --fill: #e6e6e5;
+}
 
-  .light .custom-moon {
-    transform: scale(0.5);
-  }
-  
+.root.light {
+  --fill: #21242d;
+}
+
+html,
+body,
+.root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 200ms ease-in-out;
+}
+
+.mode {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(3);
+  transition: background 200ms ease-in-out;
+}
+
+.mode .icon {
+  position: absolute;
+  fill: var(--fill);
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 200ms ease-in-out, opacity 200ms ease-in-out;
+  will-change: transform, opacity;
+}
+
+.dark .sun,
+.light .moon {
+  transform: scale(0.1); 
+  opacity: 0; 
+}
+
+.dark .moon,
+.light .sun {
+  transform: scale(1); 
+  opacity: 1;
+}
+
+.root:not(.ready) .icon {
+  transform: scale(0);
+  opacity: 0;
+}

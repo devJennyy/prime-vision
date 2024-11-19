@@ -1,6 +1,7 @@
 import Categories from "../components/Home/Categories";
 import Hero from "../components/Home/Hero";
 import Showcase from "../components/Home/Showcase";
+import GlobalSearch from "../components/layout/GlobalSearch";
 import {
   popularMoviesData,
   showcaseData,
@@ -10,6 +11,7 @@ import {
 const Homepage = () => {
   return (
     <div id="homepage" className="flex flex-col">
+      <GlobalSearch />
       <Hero />
       <Categories />
       <div className="mb-16">

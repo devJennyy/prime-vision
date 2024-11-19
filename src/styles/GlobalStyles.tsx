@@ -3,12 +3,12 @@ export const logo = (
       <img
         src="/logo.svg"
         alt="prime-vision"
-        className="w-full hidden dark:flex"
+        className="w-full sm:max-w-full max-w-5 hidden dark:flex"
       />
       <img
         src="/dark-logo.svg"
         alt="dark-prime-vision"
-        className="w-full dark:hidden"
+        className="w-full sm:max-w-full max-w-5 dark:hidden"
       />
     </>
   );
