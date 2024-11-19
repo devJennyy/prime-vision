@@ -20,7 +20,7 @@ const Header = () => {
           Prime<span className="dark:text-white text-primary/40">Vision</span>
         </p>
       </div>
-      <nav className="flex justify-between items-center max-w-[390px] w-full h-[63px] px-14 rounded-full bg-primary">
+      <nav className="lg:flex hidden justify-between items-center max-w-[390px] w-full h-[63px] px-14 rounded-full bg-primary">
         {navLinks?.map(({ label, href }) => (
           <a
             key={label}
@@ -36,7 +36,7 @@ const Header = () => {
           </a>
         ))}
       </nav>
-      <div className="flex gap-3">
+      <div className="lg:flex gap-3 hidden">
         <div className="flex justify-between items-center pl-6 pr-4 w-[205px] h-[50px] rounded-full dark:bg-deepSlate border border-primary/30 dark:border-primary dark:focus-within:border-white/80">
           <input
             placeholder="Search"

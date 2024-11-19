@@ -27,17 +27,17 @@ const Showcase = ({ title, data, hasArrow, isClickable }: Props) => {
     console.log("Download Links");
   };
   return (
-    <div className="flex flex-col items-start w-full mt-16">
+    <div className="flex flex-col items-start w-full lg:mt-16 sm:mt-20 mt-10">
       <button disabled={!isClickable} onClick={() => handleShowcase ()} className={`flex justify-center items-center gap-3 ${isClickable && `hover:gap-5 hover:text-primary/70 active:text-primary dark:hover:text-white/70 dark:active:text-white`} ${transitionEffect}`}>
-        <p className="text-[1.7rem] font-semibold">{title}</p>
-        {hasArrow && <IoChevronForward size={25}/>}
+        <p className="sm:text-[1.7rem] sm:font-semibold font-medium">{title}</p>
+        {hasArrow && <IoChevronForward className="sm:text-[25px]"/>}
       </button>
-      <div className="grid grid-cols-4 w-full gap-9 pt-10 z-30">
+      <div className="sm:grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 flex w-full 2xl:gap-9 xl:gap-6 md:gap-4 sm:gap-6 gap-3 sm:pt-10 pt-5 z-30 overflow-x-auto">
         {data?.map((data, index) => {
           return (
             <div
               key={index}
-              className="w-full h-[389px] dark:bg-primary bg-lightSlate rounded-[2rem] z-30 relative group overflow-hidden cursor-pointer"
+              className="w-full sm:max-w-full min-w-[150px] sm:h-[389px] h-[230px]  z-30 relative group overflow-hidden cursor-pointer"
             >
               <div className="opacity-0 flex flex-col justify-end items-start absolute w-full h-full bg-gradient-to-t group-hover:opacity-100 group-hover:translate-y-0 translate-y-full transition-all duration-500 ease from-black from-20% to-transparent rounded-[2rem] p-6">
                 <p className="font-semibold text-xl">{data?.title}</p>
@@ -75,7 +75,7 @@ const Showcase = ({ title, data, hasArrow, isClickable }: Props) => {
               <img
                 src={data?.imageCover}
                 alt="image-cover"
-                className="w-full h-full object-cover bg-no-repeat rounded-[2rem]"
+                className="w-full h-full object-cover bg-no-repeat xl:rounded-[2rem] sm:rounded-3xl rounded-2xl"
               />
             </div>
           );
