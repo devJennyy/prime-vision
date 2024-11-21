@@ -13,7 +13,7 @@ const Hero = () => {
     console.log("Download Links");
   };
   return (
-    <div className="flex xl:flex-row flex-col w-full xl:h-[488px] h-full xl:gap-9 lg:gap-7 mt-24">
+    <div className="flex xl:flex-row flex-col w-full xl:h-[488px] h-full xl:gap-9 lg:gap-7 sm:gap-5 mt-24 lg:mt-40 sm:mt-32">
       <div className="flex gap-3 mb-6 sm:hidden">
         <div className="flex justify-between items-center pl-6 pr-4 w-full h-[41px] dark:hover:border-white/25 rounded-full dark:bg-nightFall border border-nightFall/50 dark:focus-within:border-white/80">
           <input

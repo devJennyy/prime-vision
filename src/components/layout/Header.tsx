@@ -21,7 +21,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50); // Adjust scroll threshold as needed
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -40,8 +40,8 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 ease-in-out ${
         isScrolled
-          ? "sm:h-[100px] h-[60px] bg-primary/80 dark:bg-deepSlate/80 backdrop-blur-lg"
-          : "sm:h-32 h-20 bg-transparent"
+          ? "lg:h-[100px] sm:h-20 h-[60px] bg-primary/80 dark:bg-deepSlate/80 backdrop-blur-lg"
+          : "lg:h-32 sm:h-24 h-20 bg-transparent"
       }`}
     >
       <div className="flex justify-between items-center max-w-[1440px] mx-auto w-full 2xl:px-16 xl:px-10 px-5 h-full">
