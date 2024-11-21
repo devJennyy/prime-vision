@@ -1,7 +1,9 @@
 
-import { IoPlay } from "react-icons/io5";
+import { IoPlay, IoSearch } from "react-icons/io5";
 import { LiaDownloadSolid } from "react-icons/lia";
 import { heroShowcaseData, heroShowcaseImageData } from "../../data/showcaseData";
+import { transitionEffect } from "../../styles/GlobalStyles";
+import DarkModeToggle from "../ui/DarkModeToggle";
 
 const Hero = () => {
   const handleVideoPage = () => {
@@ -11,7 +13,23 @@ const Hero = () => {
     console.log("Download Links");
   };
   return (
-    <div className="flex xl:flex-row flex-col w-full xl:h-[488px] h-full xl:gap-9 lg:gap-7 gap-5">
+    <div className="flex xl:flex-row flex-col w-full xl:h-[488px] h-full xl:gap-9 lg:gap-7 mt-24">
+      <div className="flex gap-3 mb-6 sm:hidden">
+        <div className="flex justify-between items-center pl-6 pr-4 w-full h-[41px] dark:hover:border-white/25 rounded-full dark:bg-nightFall border border-nightFall/50 dark:focus-within:border-white/80">
+          <input
+            placeholder="Search a title"
+            className="w-full h-full bg-transparent outline-none pr-2 dark:text-white text-sm text-primary dark:placeholder-white/50 placeholder:text-sm placeholder:tracking-wide placeholder-primary/60 focus:text-primary dark:focus:text-white focus:ring-0"
+          />
+          <button className="flex items-center justify-center p-1">
+            <IoSearch
+              size={17}
+              className={`dark:text-white/50 text-primary/60 dark:active:text-white dark:hover:text-white ${transitionEffect}`}
+            />
+          </button>
+        </div>
+
+        <DarkModeToggle />
+      </div>
       <div className="flex justify-center items-center w-full flex-shrink sm:max-w-[1030px] max-w-[295px] xl:h-full sm:h-[488px] h-[154px] relative">
         <img
           src={heroShowcaseImageData?.primaryImageCover}
