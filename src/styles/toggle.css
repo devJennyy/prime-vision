@@ -17,35 +17,24 @@ body,
 
 .mode {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   transform: scale(3);
-  transition: background 200ms ease-in-out;
+  cursor: pointer;
 }
 
-.mode .icon {
+.icon {
   position: absolute;
   fill: var(--fill);
   transform: scale(0);
   opacity: 0;
-  transition: transform 200ms ease-in-out, opacity 200ms ease-in-out;
-  will-change: transform, opacity;
+  transition: transform 300ms ease, opacity 300ms ease;
 }
 
-.dark .sun,
-.light .moon {
-  transform: scale(0.1); 
-  opacity: 0; 
-}
-
-.dark .moon,
-.light .sun {
-  transform: scale(1); 
+.icon.show {
+  transform: scale(1);
   opacity: 1;
 }
 
-.root:not(.ready) .icon {
+.icon.hide {
   transform: scale(0);
   opacity: 0;
 }

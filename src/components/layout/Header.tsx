@@ -40,7 +40,7 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 ease-in-out ${
         isScrolled
-          ? "lg:h-[100px] sm:h-20 h-[60px] bg-primary/80 dark:bg-deepSlate/80 backdrop-blur-lg"
+          ? "lg:h-[100px] sm:h-20 h-[60px] dark:bg-deepSlate/80 backdrop-blur-lg "
           : "lg:h-32 sm:h-24 h-20 bg-transparent"
       }`}
     >
@@ -51,7 +51,6 @@ const Header = () => {
             Prime<span className="dark:text-white text-primary/40">Vision</span>
           </p>
         </div>
-        {/* Desktop Navbar */}
         <nav className="lg:flex hidden justify-between items-center max-w-[390px] w-full h-[63px] px-14 rounded-full bg-primary">
           {navLinks.map(({ label, href }) => (
             <a
@@ -72,19 +71,18 @@ const Header = () => {
           <div className="flex justify-between items-center pl-6 pr-4 w-[205px] h-[50px] rounded-full dark:bg-deepSlate border border-primary/30 dark:border-primary dark:focus-within:border-white/80">
             <input
               placeholder="Search"
-              className="w-full h-full bg-transparent outline-none pr-2 dark:text-white text-primary dark:placeholder-white/80 placeholder-primary/60 focus:text-primary dark:focus:text-white focus:ring-0"
+              className="w-full h-full bg-transparent outline-none pr-2 dark:text-white text-primary dark:placeholder-white/80 tracking-wide placeholder:font-light placeholder-primary/60 focus:text-primary dark:focus:text-white focus:ring-0"
             />
             <button className="flex items-center justify-center p-1">
               <IoSearch
                 size={20}
-                className="dark:text-white/80 text-primary/60"
+                className="dark:text-white/70 dark:active:text-white text-primary/60"
               />
             </button>
           </div>
-
           <DarkModeToggle />
         </div>
-        {/* Mobile Burger Icon */}
+
         <div className="lg:hidden">
           <RxHamburgerMenu
             className="sm:text-3xl text-2xl cursor-pointer dark:text-white text-primary"
@@ -93,7 +91,6 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div

@@ -13,7 +13,7 @@ import Series from "./pages/Series";
 function App() {
   return (
     <Router>
-      <div className="w-full mx-auto overflow-x-hidden overflow-y-scroll no-scrollbar relative z-0 dark:bg-[url('/images/bg-cover.png')] bg-[url('/images/light-bg-cover.png')] bg-cover bg-no-repeat h-full">
+      <div className="w-full mx-auto overflow-x-hidden overflow-y-scroll no-scrollbar relative z-0 dark:bg-[url('/images/bg-cover.png')] bg-[url('/images/light-bg-cover.png')] bg-cover bg-no-repeat bg-fixed h-full">
         <div className="max-w-[1440px] mx-auto w-full 2xl:px-16 xl:px-10 px-5">
           <Header />
           <Routes>

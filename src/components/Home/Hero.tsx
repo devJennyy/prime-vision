@@ -27,7 +27,6 @@ const Hero = () => {
             />
           </button>
         </div>
-
         <DarkModeToggle />
       </div>
       <div className="flex justify-center items-center w-full flex-shrink sm:max-w-[1030px] max-w-[295px] xl:h-full sm:h-[488px] h-[154px] relative">
