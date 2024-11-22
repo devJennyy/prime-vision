@@ -22,7 +22,7 @@ const Footer = () => {
             <button
               className={`flex justify-start items-center sm:w-[130px] gap-[3px] hover:underline underline-offset-4 hover:gap-[6px] duration-100 active:text-white/60 ${transitionEffect}`}
             >
-              <p>Visit my GitHub</p>
+              <a href="https://github.com/devJennyy" target="_blank">Visit my GitHub</a>
               <GoArrowUpRight size={15} className="md:mt-[2px]" />
             </button>
             <p className="md:block hidden">
@@ -30,14 +30,14 @@ const Footer = () => {
             </p>
             <div className="flex md:gap-3 gap-2">
               {socialButtons?.map(
-                ({ id, icon: Icon, size, smSize, className }) => (
-                  <button
+                ({ url, id, icon: Icon, size, smSize, className }) => (
+                  <a href={url} target="_blank"
                     key={id}
                     className={`flex justify-center items-center ${className} rounded-full border hover:border-white/60 hover:text-white/60 active:scale-95 ${transitionEffect}`}
                   >
                     <Icon size={size} className="md:block hidden" />
                     <Icon size={smSize} className="md:hidden" />
-                  </button>
+                  </a>
                 )
               )}
             </div>
