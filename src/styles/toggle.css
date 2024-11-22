@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --fill: #e6e6e5;
 }
 
@@ -17,6 +17,9 @@ body,
 
 .mode {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transform: scale(3);
   cursor: pointer;
 }
@@ -37,4 +40,4 @@ body,
 .icon.hide {
   transform: scale(0);
   opacity: 0;
-}
+} */

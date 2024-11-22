@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { logo } from "../../styles/GlobalStyles";
-import DarkModeToggle from "../ui/DarkModeToggle";
 import { IoSearch } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
@@ -68,7 +67,7 @@ const Header = () => {
           ))}
         </nav>
         <div className="lg:flex gap-3 hidden">
-          <div className="flex justify-between items-center pl-6 pr-4 w-[205px] h-[50px] rounded-full dark:bg-deepSlate border border-primary/30 dark:border-primary dark:focus-within:border-white/80">
+          <div className="flex justify-between items-center pl-6 pr-4 w-full max-w-[246px] h-[50px] rounded-full dark:bg-deepSlate border border-primary/30 dark:border-primary dark:focus-within:border-white/80">
             <input
               placeholder="Search"
               className="w-full h-full bg-transparent outline-none pr-2 dark:text-white text-primary dark:placeholder-white/80 tracking-wide placeholder:font-light placeholder-primary/60 focus:text-primary dark:focus:text-white focus:ring-0"
@@ -80,7 +79,7 @@ const Header = () => {
               />
             </button>
           </div>
-          <DarkModeToggle />
+          {/* <DarkModeToggle /> */}
         </div>
 
         <div className="lg:hidden">
@@ -118,7 +117,7 @@ const Header = () => {
                 {label}
               </a>
             ))}
-            <DarkModeToggle />
+            {/* <DarkModeToggle /> */}
           </motion.div>
         )}
       </AnimatePresence>
