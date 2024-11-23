@@ -7,7 +7,7 @@ const Footer = () => {
     <div className="w-full xl:pt-12 md:pt-10 sm:pt-9 pt-7 pb-5 bg-primary">
       <div className="flex flex-col justify-end items-center w-full max-w-[1440px] mx-auto h-full md:gap-12 sm:gap-8 gap-10 2xl:px-16 xl:px-10 px-5">
         <div className="flex flex-col w-full max-w-[590px] gap-6">
-          <p className="md:text-2xl sm:text-[20px] text-lg font-medium md:leading-10 leading-8 sm:px-0 px-2">
+          <p className="md:text-2xl sm:text-[20px] text-lg font-medium md:leading-10 leading-8">
             This platform is not intended for any commercial purposes; it is
             solely for showcasing my Frontend Development skills.
           </p>
