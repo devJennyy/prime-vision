@@ -4,21 +4,21 @@ import { socialButtons } from "../../data/footerData";
 
 const Footer = () => {
   return (
-    <div className="w-full xl:pt-20 md:pt-16 pt-10 bg-primary">
-      <div className="flex flex-col justify-end items-center w-full max-w-[1440px] mx-auto h-full md:gap-16 gap-11 2xl:px-16 xl:px-10 px-5">
+    <div className="w-full xl:pt-12 md:pt-10 sm:pt-9 pt-7 pb-5 bg-primary">
+      <div className="flex flex-col justify-end items-center w-full max-w-[1440px] mx-auto h-full md:gap-12 sm:gap-8 gap-10 2xl:px-16 xl:px-10 px-5">
         <div className="flex flex-col w-full max-w-[590px] gap-6">
-          <p className="md:text-2xl text-[20px] font-medium md:leading-10 leading-8">
+          <p className="md:text-2xl sm:text-[20px] text-lg font-medium md:leading-10 leading-8 sm:px-0 px-2">
             This platform is not intended for any commercial purposes; it is
             solely for showcasing my Frontend Development skills.
           </p>
-          <p className="md:text-sm text-[13px] font-light tracking-wider">
+          <p className="md:text-[16px] text-[13px] font-light tracking-wider">
             The data is sourced from the YTS API.
           </p>
         </div>
 
-        <div className="flex md:flex-row flex-col justify-between items-center w-full border-t-2 border-[#979797]/20 py-6 text-[12px] sm:tracking-widest tracking-wider font-light md:mb-7 gap-8">
-          <p className="md:hidden">Designed & Developed by Jenny Pieloor</p>
-          <div className="flex justify-between items-center w-full">
+        <div className="flex md:flex-row flex-col justify-between items-center w-full border-t-2 border-[#979797]/20 text-[12px] sm:tracking-widest tracking-wider font-light sm:gap-0 gap-8">
+          <p className="md:hidden mt-4">Designed & Developed by Jenny Pieloor</p>
+          <div className="flex justify-between items-center w-full sm:mt-5 mt-0">
             <button
               className={`flex justify-start items-center sm:w-[130px] gap-[3px] hover:underline underline-offset-4 hover:gap-[6px] duration-100 active:text-white/60 ${transitionEffect}`}
             >
