@@ -22,6 +22,7 @@ module.exports = {
         deepSlate: "#16181E",
         lightSlate: "#E5E7EB",
         softGray: "#E8E8E8",
+        silverAsh: "#979797",
       },
       borderRadius: {
         '4xl': '30px',

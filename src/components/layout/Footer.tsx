@@ -16,7 +16,7 @@ const Footer = () => {
           </p>
         </div>
 
-        <div className="flex md:flex-row flex-col justify-between items-center w-full border-t-2 border-[#979797]/20 text-[12px] sm:tracking-widest tracking-wider font-light sm:gap-0 gap-8">
+        <div className="flex md:flex-row flex-col justify-between items-center w-full border-t-2 border-silverAsh/20 text-[12px] sm:tracking-widest tracking-wider font-light sm:gap-0 gap-8">
           <p className="md:hidden mt-4">Designed & Developed by Jenny Pieloor</p>
           <div className="flex justify-between items-center w-full sm:mt-5 mt-0">
             <button

@@ -1,24 +1,10 @@
-import { IoPlay, IoSearch } from "react-icons/io5";
-import { LiaDownloadSolid } from "react-icons/lia";
-import {
-  heroShowcaseData,
-  heroShowcaseImageData,
-} from "../../data/showcaseData";
-import { transitionEffect } from "../../styles/GlobalStyles";
+import { IoPlay} from "react-icons/io5";
+import { heroShowcaseImageData } from "../../data/showcaseData";
 
 const Hero = () => {
-  const handleVideoPage = () => {
-    console.log("Play Video");
-  };
-  const handleDownloadLinks = () => {
-    console.log("Download Links");
-  };
   return (
-    <a
-      href="overview"
-      className="flex xl:flex-row flex-col w-full xl:h-[488px] h-full xl:gap-9 sm:gap-5 mt-24 xl:mt-36 lg:mt-[125px] sm:mt-[100px]"
-    >
-      <div className="flex gap-3 mb-6 sm:hidden">
+    <div className="flex xl:flex-row flex-col w-full xl:h-[488px] h-full xl:gap-9 sm:gap-5 mt-24 xl:mt-36 lg:mt-[125px] sm:mt-[100px]">
+      {/* <div className="flex gap-3 mb-6 sm:hidden">
         <div className="flex justify-between items-center pl-6 pr-4 w-full h-[41px] dark:hover:border-white/25 rounded-full dark:bg-nightFall border border-nightFall/50 dark:focus-within:border-white/80">
           <input
             placeholder="Search a title"
@@ -31,8 +17,7 @@ const Hero = () => {
             />
           </button>
         </div>
-        {/* <DarkModeToggle /> */}
-      </div>
+      </div> */}
       <div className="flex justify-center items-center w-full flex-shrink sm:max-w-[1030px] xl:h-full sm:h-[488px] h-[154px] relative">
         <img
           src={heroShowcaseImageData?.primaryImageCover}
@@ -44,46 +29,6 @@ const Hero = () => {
           alt="bg-gradient"
           className="absolute z-30 w-full h-full sm:block hidden"
         />
-        <div className="sm:flex flex-col justify-between text-left w-full h-full py-6 lg:px-10 px-6 z-40 absolute hidden">
-          <div className="py-2 px-4 bg-softGray/10 rounded-full w-fit shadow-sm backdrop-blur-sm">
-            <p className="text-white text-sm">🔥 New Popular</p>
-          </div>
-          <div className="flex flex-col lg:w-1/2 sm:w-5/6 w-full gap-4 mb-3">
-            <div className="flex gap-3">
-              {heroShowcaseData?.genre?.map((data, index) => {
-                return (
-                  <p
-                    key={index}
-                    className="text-white text-sm py-1 px-[14px] bg-softGray/10 rounded-full w-fit shadow-sm backdrop-blur-sm"
-                  >
-                    {data.name}
-                  </p>
-                );
-              })}
-            </div>
-            <p className="font-semibold text-[27px] ml-1 text-white">
-              {heroShowcaseData?.title}
-            </p>
-            <p className="ml-1 mb-2 text-white">
-              {heroShowcaseData?.shortDescription}
-            </p>
-            <div className="flex gap-3 ml-1">
-              <button
-                onClick={() => handleVideoPage()}
-                className="flex justify-center items-center py-[15px] px-6 bg-white rounded-full text-primary font-medium gap-1"
-              >
-                <IoPlay size={18} className="mb-[1px]" /> <p>Watch Now</p>
-              </button>
-              <button
-                onClick={() => handleDownloadLinks()}
-                className="flex justify-center items-center py-[15px] px-6 text-white bg-softGray/10 rounded-full w-fit shadow-sm backdrop-blur-sm gap-1"
-              >
-                <LiaDownloadSolid size={18} className="mb-[2px]" />{" "}
-                <p>Download</p>
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
       <div className="sm:flex flex-1 xl:flex-col flex-row justify-between xl:min-w-[246px] xl:max-w-[246px] w-full h-full xl:gap-9 gap-5 hidden">
         <button className="flex justify-center items-center w-full xl:h-1/2 xl:max-h-full h-[226px] dark:bg-primary bg-lightSlate rounded-[2rem] overflow-hidden relative">
@@ -106,7 +51,7 @@ const Hero = () => {
           />
         </button>
       </div>
-    </a>
+    </div>
   );
 };
 

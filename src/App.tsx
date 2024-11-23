@@ -10,6 +10,7 @@ import Homepage from "./pages/Homepage";
 import Movies from "./pages/Movies";
 import Series from "./pages/Series";
 import Footer from "./components/layout/Footer";
+import Overview from "./pages/Overview";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/homepage" element={<Homepage />} />
             <Route path="/movies" element={<Movies />} />
             <Route path="/series" element={<Series />} />
+            <Route path="/overview" element={<Overview />} />
           </Routes>
         </div>
         <Footer />
