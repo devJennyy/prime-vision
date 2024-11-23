@@ -39,24 +39,24 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 ease-in-out ${
         isScrolled
-          ? "lg:h-[100px] sm:h-20 h-[60px] dark:bg-deepSlate/80 backdrop-blur-lg "
-          : "lg:h-32 sm:h-24 h-20 bg-transparent"
+          ? "xl:h-[90px] lg:h-20 sm:h-[70px] h-[55px] dark:bg-deepSlate/80 backdrop-blur-lg "
+          : "xl:h-32 lg:h-[115px] sm:h-[95px] h-[70px] bg-transparent"
       }`}
     >
       <div className="flex justify-between items-center max-w-[1440px] mx-auto w-full 2xl:px-16 xl:px-10 px-5 h-full">
-        <div className="flex justify-center items-center sm:gap-4 gap-2">
+        <div className="flex justify-center items-center xl:gap-4 sm:gap-3 gap-2">
           {logo}
-          <p className="capitalize sm:text-3xl text-xl font-semibold dark:text-secondary text-primary">
+          <p className="capitalize xl:text-3xl sm:text-[28px] text-xl font-semibold dark:text-secondary text-primary">
             Prime<span className="dark:text-white text-primary/40">Vision</span>
           </p>
         </div>
-        <nav className="lg:flex hidden justify-between items-center max-w-[390px] w-full h-[63px] px-14 rounded-full bg-primary">
+        <nav className="lg:flex hidden justify-between items-center xl:max-w-[390px] max-w-[340px] w-full xl:h-[60px] h-[55px] xl:px-14 px-10 rounded-full bg-primary">
           {navLinks.map(({ label, href }) => (
             <a
               key={label}
               href={href}
               onClick={() => setActiveNav(href)}
-              className={`text-lg transition-all duration-300 ease-in-out ${
+              className={`xl:text-lg text-[16px] transition-all duration-300 ease-in-out ${
                 activeNav === href
                   ? "text-secondary"
                   : "text-white dark:text-white hover:text-secondary"
@@ -67,15 +67,14 @@ const Header = () => {
           ))}
         </nav>
         <div className="lg:flex gap-3 hidden">
-          <div className="flex justify-between items-center pl-6 pr-4 w-full max-w-[246px] h-[50px] rounded-full dark:bg-deepSlate border border-primary/30 dark:border-primary dark:focus-within:border-white/80">
+          <div className="flex justify-between items-center pl-6 pr-4 w-full xl:max-w-[246px] max-w-[205px] xl:h-[50px] h-[47px] rounded-full dark:bg-deepSlate border border-primary/30 dark:border-primary dark:focus-within:border-white/80">
             <input
               placeholder="Search"
-              className="w-full h-full bg-transparent outline-none pr-2 dark:text-white text-primary dark:placeholder-white/80 tracking-wide placeholder:font-light placeholder-primary/60 focus:text-primary dark:focus:text-white focus:ring-0"
+              className="w-full h-full bg-transparent outline-none pr-2 xl:text-[16px] text-sm dark:text-white text-primary dark:placeholder-white/80 tracking-wide placeholder:font-light placeholder-primary/60 focus:text-primary dark:focus:text-white focus:ring-0"
             />
             <button className="flex items-center justify-center p-1">
               <IoSearch
-                size={20}
-                className="dark:text-white/70 dark:active:text-white text-primary/60"
+                className="xl:text-[20px] text-lg dark:text-white/70 dark:active:text-white text-primary/60"
               />
             </button>
           </div>

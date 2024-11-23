@@ -12,7 +12,7 @@ const Hero = () => {
     console.log("Download Links");
   };
   return (
-    <div className="flex xl:flex-row flex-col w-full xl:h-[488px] h-full xl:gap-9 lg:gap-7 sm:gap-5 mt-24 lg:mt-40 sm:mt-32">
+    <div className="flex xl:flex-row flex-col w-full xl:h-[488px] h-full xl:gap-9 sm:gap-5 mt-24 xl:mt-36 lg:mt-[125px] sm:mt-[100px]">
       <div className="flex gap-3 mb-6 sm:hidden">
         <div className="flex justify-between items-center pl-6 pr-4 w-full h-[41px] dark:hover:border-white/25 rounded-full dark:bg-nightFall border border-nightFall/50 dark:focus-within:border-white/80">
           <input
@@ -28,7 +28,7 @@ const Hero = () => {
         </div>
         {/* <DarkModeToggle /> */}
       </div>
-      <div className="flex justify-center items-center w-full flex-shrink sm:max-w-[1030px] max-w-[295px] xl:h-full sm:h-[488px] h-[154px] relative">
+      <div className="flex justify-center items-center w-full flex-shrink sm:max-w-[1030px] xl:h-full sm:h-[488px] h-[154px] relative">
         <img
           src={heroShowcaseImageData?.primaryImageCover}
           alt="primary-image"
@@ -77,7 +77,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="sm:flex flex-1 xl:flex-col flex-row justify-between xl:min-w-[246px] xl:max-w-[246px] w-full h-full xl:gap-9 lg:gap-7 gap-5 hidden">
+      <div className="sm:flex flex-1 xl:flex-col flex-row justify-between xl:min-w-[246px] xl:max-w-[246px] w-full h-full xl:gap-9 gap-5 hidden">
         <button className="flex justify-center items-center w-full xl:h-1/2 xl:max-h-full h-[226px] dark:bg-primary bg-lightSlate rounded-[2rem] overflow-hidden relative">
           <div className="z-30 w-full h-full absolute bg-gradient-to-tl from-black via-transparent to-transparent to-100%"></div>
           <img
