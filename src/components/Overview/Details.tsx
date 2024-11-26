@@ -18,7 +18,7 @@ const Details = () => {
     console.log("Share Links");
   };
   return (
-    <div className="w-full my-16">
+    <div className="w-full my-16 relative">
       <div className="flex justify-between w-full">
         <div className="flex flex-col items-start gap-2">
           <p className="text-[2rem] font-semibold tracking-wide">Deadpool</p>
@@ -32,15 +32,15 @@ const Details = () => {
               <p>7.0 (IMDb)</p>
             </div>
           </div>
-          <div className="flex tracking-wide gap-16 text-left mt-10">
+          <div className="flex tracking-wide lg:gap-16 gap-14 text-left mt-10">
             <div className="flex flex-col gap-5">
-              <p className="text-xl font-medium">Release Date</p>
-              <p className="font-light">December 9, 2017</p>
+              <p className="lg:text-xl text-lg font-medium">Release Date</p>
+              <p className="lg:text-[16px] text-sm font-light">December 9, 2017</p>
             </div>
             <div className="flex flex-col gap-5">
-              <p className="text-xl font-medium">Genre</p>
+              <p className="lg:text-xl text-lg font-medium">Genre</p>
               <div className="flex flex-col lg:w-1/2 sm:w-5/6 w-full gap-4 mb-3">
-                <div className="flex gap-3">
+                <div className="flex lg:gap-3 gap-2">
                   {heroShowcaseData?.genre?.map((data, index) => {
                     return (
                       <p
@@ -55,8 +55,8 @@ const Details = () => {
               </div>
             </div>
             <div className="flex flex-col gap-5">
-              <p className="text-xl font-medium">Available In</p>
-              <div className="flex gap-3">
+              <p className="lg:text-xl text-lg font-medium">Available In</p>
+              <div className="flex lg:gap-3 gap-2">
                 {screenResolutions?.resolutions?.map((data, index) => {
                   return (
                     <p
@@ -71,7 +71,7 @@ const Details = () => {
             </div>
           </div>
         </div>
-        <div className="flex h-[52px] gap-4">
+        <div className="flex h-[52px] lg:gap-4 gap-3 absolute right-0">
           <button
             onClick={() => handleVideoPage()}
             className={`flex justify-center items-center w-full h-full px-6 border rounded-full text-white font-medium gap-1 hover:border-secondary hover:text-secondary active:border-white/70 active:text-white/70 ${transitionEffect}`}

@@ -24,11 +24,6 @@ const Hero = () => {
           alt="primary-image"
           className="w-full h-full object-cover bg-no-repeat sm:rounded-[2.5rem] rounded-2xl z-20"
         />
-        <img
-          src="/images/bg-gradient.png"
-          alt="bg-gradient"
-          className="absolute z-30 w-full h-full sm:block hidden"
-        />
       </div>
       <div className="sm:flex flex-1 xl:flex-col flex-row justify-between xl:min-w-[246px] xl:max-w-[246px] w-full h-full xl:gap-9 gap-5 hidden">
         <button className="flex justify-center items-center w-full xl:h-1/2 xl:max-h-full h-[226px] dark:bg-primary bg-lightSlate rounded-[2rem] overflow-hidden relative">

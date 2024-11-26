@@ -5,7 +5,7 @@ export const topCast = {
       role: "Deadpool",
     },
     {
-      actor: "Morena Baccarin",
+      actor: "Morena Baccari",
       role: "Vanessa Carlysle",
     },
     {
@@ -28,20 +28,21 @@ export const topCast = {
       actor: "Josh Brolin",
       role: "Cable",
     },
+    {
+      actor: "Josh Brolin",
+      role: "Cable",
+    },
   ],
 };
 
 export const directors = [
   {
-    name: "Ryan Coogler",
-    knownFor: "Black Panther",
+    name: "Tim Miller",
   },
   {
-    name: "Christopher Nolan",
-    knownFor: "Inception",
+    name: "David Leitch",
   },
   {
-    name: "Greta Gerwig",
-    knownFor: "Lady Bird",
+    name: "Shawn Levy",
   },
 ];
