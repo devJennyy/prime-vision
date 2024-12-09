@@ -1,13 +1,19 @@
+export const  mediaDetails= {
+  title: "Deadpool",
+  duration: "2 hr 58 min",
+  ratingScore: "7.0",
+  };
+
 export const screenResolutions = {
   resolutions: [
     {
-      label: "720p WEB",
+      label: "720p",
     },
     {
-      label: "1080p WEB",
+      label: "1080p",
     },
     {
-      label: "2160p WEB x265",
+      label: "2160p",
     },
   ],
 };
