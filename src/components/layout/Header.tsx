@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { logo } from "../../styles/GlobalStyles";
-import { IoSearch } from "react-icons/io5";
+import { logo, transitionEffect } from "../../styles/GlobalStyles";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
+import { FaGithub } from "react-icons/fa6";
+import { FiSearch } from "react-icons/fi";
 
 const Header = () => {
   const [activeNav, setActiveNav] = useState("#homepage");
@@ -37,28 +38,28 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 ease-in-out ${
+      className={`fixed top-0 left-0 right-0 z-50 h-20 w-full transition-all duration-500 ease-in-out border-b border-silverAsh/10 ${
         isScrolled
-          ? "xl:h-[90px] lg:h-20 sm:h-[70px] h-[55px] dark:bg-deepSlate/80 backdrop-blur-lg "
-          : "xl:h-32 lg:h-[115px] sm:h-[95px] h-[70px] bg-transparent"
+          ? "dark:bg-deepSlate/80 backdrop-blur-lg "
+          : "bg-transparent"
       }`}
     >
       <div className="flex justify-between items-center max-w-[1440px] mx-auto w-full 2xl:px-16 xl:px-10 px-5 h-full">
-        <div className="flex justify-center items-center xl:gap-4 sm:gap-3 gap-2">
+        <a href="/homepage" className="flex justify-center items-center gap-2">
           {logo}
-          <p className="capitalize xl:text-3xl sm:text-[28px] text-xl font-semibold dark:text-secondary text-primary">
+          <p className="capitalize text-[28px] font-medium dark:text-secondary text-primary">
             Prime<span className="dark:text-white text-primary/40">Vision</span>
           </p>
-        </div>
-        <nav className="lg:flex hidden justify-between items-center xl:max-w-[390px] max-w-[340px] w-full xl:h-[60px] h-[55px] xl:px-14 px-10 rounded-full bg-primary">
+        </a>
+        <nav className="lg:flex hidden justify-between items-center gap-14">
           {navLinks.map(({ label, href }) => (
             <a
               key={label}
               href={href}
               onClick={() => setActiveNav(href)}
-              className={`xl:text-lg text-[16px] transition-all duration-300 ease-in-out ${
+              className={`xl:text-lg text-[16px] tracking-wide font-light ${transitionEffect}  ${
                 activeNav === href
-                  ? "text-secondary"
+                  ? "text-secondary font-normal"
                   : "text-white dark:text-white hover:text-secondary"
               }`}
             >
@@ -66,19 +67,21 @@ const Header = () => {
             </a>
           ))}
         </nav>
-        <div className="lg:flex gap-3 hidden">
-          <div className="flex justify-between items-center pl-6 pr-4 w-full xl:max-w-[246px] max-w-[205px] xl:h-[50px] h-[47px] rounded-full dark:bg-deepSlate border border-primary/30 dark:border-primary dark:focus-within:border-white/80">
+        <div className="flex justify-center items-center gap-2">
+          <div className="flex justify-between items-center pl-6 pr-4 w-full max-w-[205px] h-11 rounded-full  border border-primary/30 dark:border-primary dark:focus-within:border-white/80">
             <input
               placeholder="Search"
-              className="w-full h-full bg-transparent outline-none pr-2 xl:text-[16px] text-sm dark:text-white text-primary dark:placeholder-white/80 tracking-wide placeholder:font-light placeholder-primary/60 focus:text-primary dark:focus:text-white focus:ring-0"
+              className="w-full h-full bg-transparent outline-none pr-2 xl:text-[16px] text-sm dark:text-white text-primary dark:placeholder-white tracking-wide placeholder:font-light placeholder-primary/60 focus:text-primary dark:focus:text-white focus:ring-0"
             />
             <button className="flex items-center justify-center p-1">
-              <IoSearch
-                className="xl:text-[20px] text-lg dark:text-white/70 dark:active:text-white text-primary/60"
+              <FiSearch 
+                className="xl:text-[18px] text-lg dark:text-white/90 dark:active:text-white text-primary/60"
               />
             </button>
           </div>
-          {/* <DarkModeToggle /> */}
+          <a href="https://github.com/devJennyy" target="_blank" className={`p-2 hover:bg-primary rounded-full ${transitionEffect}`}>
+            <FaGithub size={22} />
+          </a>
         </div>
 
         <div className="lg:hidden">
@@ -116,7 +119,6 @@ const Header = () => {
                 {label}
               </a>
             ))}
-            {/* <DarkModeToggle /> */}
           </motion.div>
         )}
       </AnimatePresence>
