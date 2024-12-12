@@ -26,7 +26,7 @@ function App() {
             <Route path="/overview" element={<Overview />} />
           </Routes>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </Router>
   );

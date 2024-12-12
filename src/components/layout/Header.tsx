@@ -38,16 +38,14 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 h-20 w-full transition-all duration-500 ease-in-out border-b border-silverAsh/10 ${
-        isScrolled
-          ? "dark:bg-deepSlate/80 backdrop-blur-lg "
-          : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 sm:h-20 w-full transition-all duration-500 ease-in-out sm:border-b sm:border-silverAsh/10 ${
+        isScrolled ? "dark:bg-deepSlate/80 backdrop-blur-lg " : "bg-transparent"
       }`}
     >
-      <div className="flex justify-between items-center max-w-[1440px] mx-auto w-full 2xl:px-16 xl:px-10 px-5 h-full">
+      <div className="sm:flex justify-between items-center max-w-[1440px] mx-auto w-full 2xl:px-16 xl:px-10 px-5 h-full hidden">
         <a href="/homepage" className="flex justify-center items-center gap-2">
           {logo}
-          <p className="capitalize text-[28px] font-medium dark:text-secondary text-primary">
+          <p className="capitalize lg:text-[28px] text-2xl font-medium dark:text-secondary text-primary">
             Prime<span className="dark:text-white text-primary/40">Vision</span>
           </p>
         </a>
@@ -67,31 +65,57 @@ const Header = () => {
             </a>
           ))}
         </nav>
-        <div className="flex justify-center items-center gap-2">
+        <div className="lg:flex justify-center items-center gap-2 hidden">
           <div className="flex justify-between items-center pl-6 pr-4 w-full max-w-[205px] h-11 rounded-full  border border-primary/30 dark:border-primary dark:focus-within:border-white/80">
             <input
               placeholder="Search"
               className="w-full h-full bg-transparent outline-none pr-2 xl:text-[16px] text-sm dark:text-white text-primary dark:placeholder-white tracking-wide placeholder:font-light placeholder-primary/60 focus:text-primary dark:focus:text-white focus:ring-0"
             />
             <button className="flex items-center justify-center p-1">
-              <FiSearch 
-                className="xl:text-[18px] text-lg dark:text-white/90 dark:active:text-white text-primary/60"
-              />
+              <FiSearch className="xl:text-[18px] text-lg dark:text-white/90 dark:active:text-white text-primary/60" />
             </button>
           </div>
-          <a href="https://github.com/devJennyy" target="_blank" className={`p-2 hover:bg-primary rounded-full ${transitionEffect}`}>
+          <a
+            href="https://github.com/devJennyy"
+            target="_blank"
+            className={`p-2 hover:bg-primary rounded-full ${transitionEffect}`}
+          >
             <FaGithub size={22} />
           </a>
         </div>
 
-        <div className="lg:hidden">
+        <div className="flex justify-center items-center gap-5 lg:hidden">
+          <div className="flex justify-center items-center gap-2">
+            <div className="flex justify-between items-center pl-6 pr-4 w-full max-w-[205px] h-11 rounded-full  border border-primary/30 dark:border-primary dark:focus-within:border-white/80">
+              <input
+                placeholder="Search"
+                className="w-full h-full bg-transparent outline-none pr-2 xl:text-[16px] text-sm dark:text-white text-primary dark:placeholder-white tracking-wide placeholder:font-light placeholder-primary/60 focus:text-primary dark:focus:text-white focus:ring-0"
+              />
+              <button className="flex items-center justify-center p-1">
+                <FiSearch className="xl:text-[18px] text-lg dark:text-white/90 dark:active:text-white text-primary/60" />
+              </button>
+            </div>
+            <a
+              href="https://github.com/devJennyy"
+              target="_blank"
+              className={`p-2 hover:bg-primary lg:bg-none sm:bg-primary rounded-full ${transitionEffect}`}
+            >
+              <FaGithub size={22} />
+            </a>
+          </div>
           <RxHamburgerMenu
-            className="sm:text-3xl text-2xl cursor-pointer dark:text-white text-primary"
+            className="sm:text-3xl cursor-pointer dark:text-white text-primary"
             onClick={toggleMenu}
           />
         </div>
       </div>
 
+      <div className="absolute right-5 top-4 sm:hidden">
+      <RxHamburgerMenu
+            className="text-3xl cursor-pointer dark:text-white text-primary"
+            onClick={toggleMenu}
+          />
+      </div>
       <AnimatePresence>
         {isOpen && (
           <motion.div
