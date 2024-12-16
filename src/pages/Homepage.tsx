@@ -4,19 +4,18 @@ import { AiOutlineShareAlt } from "react-icons/ai";
 import { IoPlay } from "react-icons/io5";
 import { LiaDownloadSolid } from "react-icons/lia";
 import { transitionEffect } from "../styles/GlobalStyles";
-import { EffectCoverflow, Pagination } from "swiper/modules";
+import { Autoplay, EffectCoverflow } from "swiper/modules";
 import { heroShowcaseData, showcaseData } from "../data/showcaseData";
 import { IoMdTime } from "react-icons/io";
 import { mediaDetails } from "../data/detailsData";
 import { FaStar } from "react-icons/fa6";
-
 
 const Homepage = () => {
   const handleVideoPage = () => console.log("Play Video");
   const handleDownloadLinks = () => console.log("Download Links");
   const handleShareLinks = () => console.log("Share Links");
   return (
-    <div id="homepage" className="sm:flex flex-col hidden">
+    <a id="homepage" className="sm:flex flex-col hidden">
       <div className="flex flex-col justify-center items-center w-full my-auto h-screen">
         <div className="w-full">
           <Swiper
@@ -25,6 +24,10 @@ const Homepage = () => {
             centeredSlides={true}
             loop={true}
             slidesPerView={4}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
             coverflowEffect={{
               rotate: 50,
               stretch: 0,
@@ -32,17 +35,18 @@ const Homepage = () => {
               modifier: 1,
               slideShadows: true,
             }}
-            pagination={true}
-            modules={[EffectCoverflow, Pagination]}
+            modules={[EffectCoverflow, Autoplay]}
             className="mySwiper"
           >
             {showcaseData?.map((slides) => {
               return (
-                <SwiperSlide className="mb-14">
-                  <img
-                    src={slides?.imageCover}
-                    className="bg-cover w-full max-w-[407px] h-[453px]"
-                  />
+                <SwiperSlide className="mb-10">
+                  <a href="overview">
+                    <img
+                      src={slides?.imageCover}
+                      className="bg-cover w-full max-w-[407px] h-[453px]"
+                    />
+                  </a>
                 </SwiperSlide>
               );
             })}
@@ -61,22 +65,22 @@ const Homepage = () => {
             </div>
           </div>
           <div className="flex lg:gap-3 gap-2 mt-2">
-              {heroShowcaseData?.genre?.map((data, index) => (
-                <p
-                  key={index}
-                  className="text-white text-[12px] py-1 px-[14px] bg-nightFall rounded-full shadow-sm backdrop-blur-sm"
-                >
-                  {data.name}
-                </p>
-              ))}
-            </div>
+            {heroShowcaseData?.genre?.map((data, index) => (
+              <p
+                key={index}
+                className="text-white text-[12px] py-1 px-[14px] bg-nightFall rounded-full shadow-sm backdrop-blur-sm"
+              >
+                {data.name}
+              </p>
+            ))}
+          </div>
         </div>
       </div>
       <div className="flex flex-col w-full max-w-[1440px] mx-auto 2xl:px-16 xl:px-10 px-5 fixed left-0 right-0 bottom-0 mb-7">
         <div className="border-t-2 border-silverAsh/10 mb-6"></div>
         <div className="flex justify-between items-center w-full">
           <div className="flex flex-col items-start text-[12px] tracking-wider font-light gap-1">
-            <p>December 9, 2023</p>
+            <p>2024 - Movie</p>
             <p>Deadpool & Wolverine</p>
           </div>
           <div className="flex h-11 gap-3">
@@ -102,7 +106,7 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </a>
   );
 };
 

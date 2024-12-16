@@ -35,6 +35,7 @@ export const showcaseData = [
     rating: "7.0",
     genre: "Comedy",
     contentType: "Movie",
+    year: "2024",
     dateUploaded: "December 15, 2024 at 06:46 PM",
     resolutions: [
       {

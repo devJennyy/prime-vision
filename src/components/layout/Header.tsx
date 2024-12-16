@@ -7,12 +7,12 @@ import { FaGithub } from "react-icons/fa6";
 import { FiSearch } from "react-icons/fi";
 
 const Header = () => {
-  const [activeNav, setActiveNav] = useState("#homepage");
+  const [activeNav, setActiveNav] = useState("/homepage");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { label: "Home", href: "#homepage" },
+    { label: "Home", href: "/homepage" },
     { label: "Movies", href: "#movies" },
     { label: "Series", href: "#series" },
   ];
