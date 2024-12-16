@@ -1,3 +1,12 @@
+export const slidesData = [
+  '/images/slide-one.jpg',
+  '/images/slide-two.jpg',
+  '/images/slide-three.jpg',
+  '/images/slide-five.jpeg',
+  '/images/slide-six.jpg',
+  '/images/slide-four.jpg',
+];
+
 export const heroShowcaseImageData = {
   primaryImageCover: "/images/deadpool.jpg",
   secondaryImageCover: "/images/deadpool-one.png",
@@ -20,121 +29,123 @@ export const heroShowcaseData = {
 
 export const showcaseData = [
   {
-    title: "Starwars",
-    rating: "4.9",
-    genre: "Fantasy",
+    imageCover: "/images/slide-one.jpg",
+    title: "Deadpool & Wolverine",
     duration: "2 hr 58 min",
-    imageCover: "/images/starwars.jpg",
+    rating: "7.0",
+    genre: "Comedy",
+    contentType: "Movie",
+    dateUploaded: "December 15, 2024 at 06:46 PM",
+    resolutions: [
+      {
+        label: "720p",
+      },
+      {
+        label: "1080p",
+      },
+      {
+        label: "2160p",
+      },
+    ],
   },
   {
-    title: "Starwars",
-    rating: "4.9",
-    genre: "Fantasy",
+    imageCover: "/images/slide-two.jpg",
+    title: "Star Wars",
     duration: "2 hr 58 min",
-    imageCover: "/images/starwars.jpg",
+    rating: "7.0",
+    genre: "Comedy",
+    contentType: "Movie",
+    dateUploaded: "December 15, 2024 at 06:46 PM",
+    resolutions: [
+      {
+        label: "720p",
+      },
+      {
+        label: "1080p",
+      },
+      {
+        label: "2160p",
+      },
+    ],
   },
   {
-    title: "Starwars",
-    rating: "4.9",
-    genre: "Fantasy",
+    imageCover: "/images/slide-three.jpg",
+    title: "Deadpool & Wolverine",
     duration: "2 hr 58 min",
-    imageCover: "/images/starwars.jpg",
+    rating: "7.0",
+    genre: "Comedy",
+    contentType: "Movie",
+    dateUploaded: "December 15, 2024 at 06:46 PM",
+    resolutions: [
+      {
+        label: "720p",
+      },
+      {
+        label: "1080p",
+      },
+      {
+        label: "2160p",
+      },
+    ],
   },
   {
-    title: "Starwars",
-    rating: "4.9",
-    genre: "Fantasy",
+    imageCover: "/images/slide-five.jpeg",
+    title: "Deadpool & Wolverine",
     duration: "2 hr 58 min",
-    imageCover: "/images/starwars.jpg",
+    rating: "7.0",
+    genre: "Comedy",
+    contentType: "Movie",
+    dateUploaded: "December 15, 2024 at 06:46 PM",
+    resolutions: [
+      {
+        label: "720p",
+      },
+      {
+        label: "1080p",
+      },
+      {
+        label: "2160p",
+      },
+    ],
   },
   {
-    title: "Starwars",
-    rating: "4.9",
-    genre: "Fantasy",
+    imageCover: "/images/slide-six.jpg",
+    title: "Deadpool & Wolverine",
     duration: "2 hr 58 min",
-    imageCover: "/images/starwars.jpg",
+    rating: "7.0",
+    genre: "Comedy",
+    contentType: "Movie",
+    dateUploaded: "December 15, 2024 at 06:46 PM",
+    resolutions: [
+      {
+        label: "720p",
+      },
+      {
+        label: "1080p",
+      },
+      {
+        label: "2160p",
+      },
+    ],
   },
   {
-    title: "Starwars",
-    rating: "4.9",
-    genre: "Fantasy",
+    imageCover: "/images/slide-four.jpg",
+    title: "Deadpool & Wolverine",
     duration: "2 hr 58 min",
-    imageCover: "/images/starwars.jpg",
-  },
-  {
-    title: "Starwars",
-    rating: "4.9",
-    genre: "Fantasy",
-    duration: "2 hr 58 min",
-    imageCover: "/images/starwars.jpg",
-  },
-  {
-    title: "Starwars",
-    rating: "4.9",
-    genre: "Fantasy",
-    duration: "2 hr 58 min",
-    imageCover: "/images/starwars.jpg",
-  },
-];
-
-export const popularMoviesData = [
-  {
-    title: "Starwars",
-    rating: "4.9",
-    genre: "Fantasy",
-    duration: "2 hr 58 min",
-    imageCover: "/images/starwars.jpg",
-  },
-  {
-    title: "Starwars",
-    rating: "4.9",
-    genre: "Fantasy",
-    duration: "2 hr 58 min",
-    imageCover: "/images/starwars.jpg",
-  },
-  {
-    title: "Starwars",
-    rating: "4.9",
-    genre: "Fantasy",
-    duration: "2 hr 58 min",
-    imageCover: "/images/starwars.jpg",
-  },
-  {
-    title: "Starwars",
-    rating: "4.9",
-    genre: "Fantasy",
-    duration: "2 hr 58 min",
-    imageCover: "/images/starwars.jpg",
-  },
-];
-
-export const trendingSeriesData = [
-  {
-    title: "Starwars",
-    rating: "4.9",
-    genre: "Fantasy",
-    duration: "2 hr 58 min",
-    imageCover: "/images/starwars.jpg",
-  },
-  {
-    title: "Starwars",
-    rating: "4.9",
-    genre: "Fantasy",
-    duration: "2 hr 58 min",
-    imageCover: "/images/starwars.jpg",
-  },
-  {
-    title: "Starwars",
-    rating: "4.9",
-    genre: "Fantasy",
-    duration: "2 hr 58 min",
-    imageCover: "/images/starwars.jpg",
-  },
-  {
-    title: "Starwars",
-    rating: "4.9",
-    genre: "Fantasy",
-    duration: "2 hr 58 min",
-    imageCover: "/images/starwars.jpg",
+    rating: "7.0",
+    genre: "Comedy",
+    contentType: "Movie",
+    dateUploaded: "December 15, 2024 at 06:46 PM",
+    resolutions: [
+      {
+        label: "720p",
+      },
+      {
+        label: "1080p",
+      },
+      {
+        label: "2160p",
+      },
+    ],
   },
 ];
