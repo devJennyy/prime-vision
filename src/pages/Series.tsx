@@ -1,3 +1,5 @@
+import Showcase from "../components/Home/Showcase"
+import Hero from "../components/SharedComponent/Hero"
 
 
 const Series = () => {
@@ -6,6 +8,8 @@ const Series = () => {
       id="series"
       className="flex flex-col"
     >
+      <Hero menuType={"Series"} />
+      <Showcase />
     </div>
   )
 }

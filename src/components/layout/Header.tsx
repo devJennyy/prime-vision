@@ -5,6 +5,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
 import { FaGithub } from "react-icons/fa6";
 import { FiSearch } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [activeNav, setActiveNav] = useState("/homepage");
@@ -13,8 +14,8 @@ const Header = () => {
 
   const navLinks = [
     { label: "Home", href: "/homepage" },
-    { label: "Movies", href: "#movies" },
-    { label: "Series", href: "#series" },
+    { label: "Movies", href: "/movies" },
+    { label: "Series", href: "/series" },
   ];
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
@@ -43,17 +44,17 @@ const Header = () => {
       }`}
     >
       <div className="sm:flex justify-between items-center max-w-[1440px] mx-auto w-full 2xl:px-16 xl:px-10 px-5 h-full hidden">
-        <a href="/homepage" className="flex justify-center items-center gap-2">
+        <Link to="/homepage" className="flex justify-center items-center gap-2">
           {logo}
           <p className="capitalize lg:text-[28px] text-2xl font-medium dark:text-secondary text-primary">
             Prime<span className="dark:text-white text-primary/40">Vision</span>
           </p>
-        </a>
+        </Link>
         <nav className="lg:flex hidden justify-between items-center gap-14">
           {navLinks.map(({ label, href }) => (
-            <a
+            <Link
               key={label}
-              href={href}
+              to={href}
               onClick={() => setActiveNav(href)}
               className={`xl:text-lg text-[16px] tracking-wide font-light ${transitionEffect}  ${
                 activeNav === href
@@ -62,7 +63,7 @@ const Header = () => {
               }`}
             >
               {label}
-            </a>
+            </Link>
           ))}
         </nav>
         <div className="lg:flex justify-center items-center gap-2 hidden">

@@ -1,6 +1,5 @@
-import Casts from "../components/Movies/Casts"
-import Details from "../components/Movies/Details"
-
+import Showcase from "../components/Home/Showcase"
+import Hero from "../components/SharedComponent/Hero"
 
 const Movies = () => {
   return (
@@ -8,8 +7,8 @@ const Movies = () => {
       id="movies"
       className="flex flex-col"
     >
-      <Details />
-      <Casts />
+      <Hero menuType={"Movies"} />
+      <Showcase />
     </div>
   )
 }
