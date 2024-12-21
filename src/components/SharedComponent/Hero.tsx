@@ -1,38 +1,57 @@
 import { IoChevronBackOutline, IoChevronForwardOutline } from "react-icons/io5";
 import { movieCategoriesData } from "../../data/movieData";
 import { transitionEffect } from "../../styles/GlobalStyles";
-
+import React from "react";
+import { Tabs } from "react-tabs-scrollable";
+import "react-tabs-scrollable/dist/rts.css";
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 interface Props {
   menuType: string;
 }
 
-const Hero = ({menuType} : Props) => {
+const Hero = ({ menuType }: Props) => {
+  const [activeTab, setActiveTab] = React.useState<number>(1);
+
+  const onTabClick = (_: React.BaseSyntheticEvent, index: number) => {
+    setActiveTab(index);
+  };
+
   return (
+    <SkeletonTheme baseColor="#202020" highlightColor="#444">
     <div id="movies" className="flex flex-col items-start w-full mt-20 gap-5">
-      <p className="text-2xl mt-10 font-medium tracking-wide">{menuType}</p>
-      <div className="flex justify-center items-center w-full gap-4 h-14">
-        <button
-          className={`flex justify-center items-center p-[10px] bg-nightFall border border-lightSlate/50 rounded-full hover:scale-105 hover:border-secondary hover:text-secondary hover:bg-transparent active:bg-nightFall active:border-lightSlate/50 active:text-white ${transitionEffect}`}
+      <p className="text-2xl mt-10 font-medium tracking-wide">{menuType || <Skeleton count={1}/>}</p>
+      <div className="w-full">
+        <Tabs
+          activeTab={activeTab}
+          onTabClick={onTabClick}
+          leftBtnIcon={
+            <button
+              className={`flex justify-center items-center p-3 text-white hover:text-secondary`}
+            >
+              <IoChevronBackOutline size={18} />
+            </button>
+          }
+          rightBtnIcon={
+            <button
+              className={`flex justify-center items-center p-3 text-white hover:text-secondary`}
+            >
+              <IoChevronForwardOutline size={18} />
+            </button>
+          }
         >
-          <IoChevronBackOutline size={18} />
-        </button>
-        <div className="flex items-center gap-3 overflow-hidden w-full">
           {movieCategoriesData?.map((data, index) => (
             <button
               key={index}
-              className={`w-full text-white whitespace-nowrap text-sm py-2 px-5 bg-nightFall rounded-full shadow-sm backdrop-blur-sm border-silverAsh/10 border hover:bg-transparent hover:text-secondary hover:border-secondary ${transitionEffect}`}
+              className={`w-full whitespace-nowrap shadow-sm backdrop-blur-sm hover:bg-transparent hover:text-secondary hover:border-secondary ${transitionEffect}`}
             >
               {data.label}
             </button>
           ))}
-        </div>
-        <button
-          className={`flex justify-center items-center p-[10px] bg-nightFall border border-lightSlate/50 rounded-full hover:scale-105 hover:border-secondary hover:text-secondary hover:bg-transparent active:bg-nightFall active:border-lightSlate/50 active:text-white ${transitionEffect}`}
-        >
-          <IoChevronForwardOutline size={18} />
-        </button>
+        </Tabs>
       </div>
     </div>
+    </SkeletonTheme>
   );
 };
 

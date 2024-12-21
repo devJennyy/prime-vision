@@ -49,3 +49,47 @@ body {
   display: none;
 }
 
+/* scrollable react tabs css */
+.rts___tab.rts___btn {
+  border: 1px solid;
+  border-color: rgba(229, 231, 235, 0.1);
+  background-color: #252836;
+  font-size: 14px;
+}
+
+.rts___btn.rts___nav___btn {
+  border: 1px solid;
+  border-color: rgba(229, 231, 235, 0.5);
+  background-color: #252836;
+  margin: 10px;
+}
+
+.rts___tabs.hide___rts___tabs___scroll{
+  margin: 0 12px;
+}
+
+.rts___btn.rts___nav___btn:hover{
+  background-color: transparent;
+  border-color: #5CFEF0;
+  transform: scale(1.03);
+  transition: transform 0.3s ease
+}
+
+.rts button:disabled.rts___btn svg, .rts___nav___btn:disabled svg, button[disabled].rts___btn svg {
+  stroke: rgba(230, 230, 229, 0.2) !important;
+}
+
+.button:disabled.rts___btn, .rts___nav___btn:disabled, button[disabled].rts___btn {
+  cursor: not-allowed;
+  border-color: rgba(229, 231, 235, 0.1) !important;
+  pointer-events: none;
+}
+
+/* loading spinner */
+.sweet-loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
