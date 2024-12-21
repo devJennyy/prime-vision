@@ -9,7 +9,6 @@ import Header from "./components/layout/Header";
 import Homepage from "./pages/Homepage";
 import Movies from "./pages/Movies";
 import Series from "./pages/Series";
-import Footer from "./components/layout/Footer";
 import Overview from "./pages/Overview";
 
 function App() {
