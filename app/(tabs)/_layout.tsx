@@ -1,5 +1,7 @@
+import { Asset } from "expo-asset";
 import { Tabs, usePathname, useRouter } from "expo-router";
-import { useEffect, useRef } from "react";
+import LottieView from "lottie-react-native";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Animated,
   Image,
@@ -79,11 +81,35 @@ export default function RootLayout() {
   const pathname = usePathname();
   const activePath = pathname === "/index" ? "/" : pathname;
 
+  const [showTabs, setShowTabs] = useState(false);
+  const animationRef = useRef<LottieView>(null);
+
   useEffect(() => {
-    Object.values(TAB_BACKGROUNDS).forEach((image) =>
-      Image.resolveAssetSource(image)
-    );
+    const preload = async () => {
+      try {
+        const images = Object.values(TAB_BACKGROUNDS);
+        await Asset.loadAsync(images);
+      } catch (e) {
+        console.warn("Asset preload error:", e);
+      }
+    };
+    preload();
   }, []);
+
+  if (!showTabs) {
+    return (
+      <View style={styles.loadingContainer}>
+        <LottieView
+          ref={animationRef}
+          source={require("../../assets/animations/loading.json")}
+          autoPlay
+          loop={false}
+          onAnimationFinish={() => setShowTabs(true)}
+          style={{ width: 200, height: 200 }}
+        />
+      </View>
+    );
+  }
 
   return (
     <View style={{ flex: 1 }}>
@@ -136,6 +162,12 @@ export default function RootLayout() {
 }
 
 const styles = StyleSheet.create({
+  loadingContainer: {
+    flex: 1,
+    backgroundColor: "#000",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   customTabWrapper: {
     position: "absolute",
     bottom: 0,
