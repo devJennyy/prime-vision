@@ -1,3 +1,4 @@
+import HeroCarousel from "@/components/HeroCarousel";
 import MovieCard from "@/components/MovieCard";
 import SearchBar from "@/components/SearchBar";
 import { fetchMovies } from "@/services/api";
@@ -49,41 +50,11 @@ export default function Index() {
             onPress={() => router.push("/search")}
             placeholder="What are you looking for?"
           />
+        </View>
 
-          <View className="w-full flex flex-col gap-10 mb-10 mt-[-5px]">
-            <View className="relative w-full flex flex-row justify-center items-center">
-              <Image
-                source={require("../../assets/images/poster3.png")}
-                className="absolute w-[119px] h-[153px] z-30 left-0"
-                resizeMode="cover"
-              />
+        <HeroCarousel />
 
-              <Image
-                source={require("../../assets/images/poster4.png")}
-                className="absolute w-[163px] h-[238px] z-40 left-10"
-                resizeMode="cover"
-              />
-
-              <Image
-                source={require("../../assets/images/poster1.png")}
-                className="w-[214px] h-[316px] z-50"
-                resizeMode="cover"
-              />
-
-              <Image
-                source={require("../../assets/images/poster2.png")}
-                className="absolute w-[163px] h-[238px] z-40 right-10"
-                resizeMode="cover"
-              />
-
-              <Image
-                source={require("../../assets/images/poster5.png")}
-                className="absolute w-[119px] h-[153px] z-30 right-0"
-                resizeMode="cover"
-              />
-            </View>
-          </View>
-
+        <View className="w-full flex flex-col gap-5 px-5 mt-8">
           {moviesLoading ? (
             <ActivityIndicator
               size="large"
@@ -96,85 +67,6 @@ export default function Index() {
             <View className="flex-1">
               <View className="flex flex-col gap-5">
                 <Text className="text-xl font-bold text-white">For you</Text>
-
-                <FlatList
-                  data={movies}
-                  renderItem={({ item }) => <MovieCard {...item} horizontal />}
-                  keyExtractor={(item) => item.id.toString()}
-                  horizontal
-                  showsHorizontalScrollIndicator={false}
-                  ItemSeparatorComponent={() => <View className="w-4" />}
-                  className="mb-4"
-                />
-              </View>
-            </View>
-          )}
-
-          {moviesLoading ? (
-            <ActivityIndicator
-              size="large"
-              color="#8486ED"
-              className="mt-10 self-center"
-            />
-          ) : moviesError ? (
-            <Text> Error: {moviesError?.message} </Text>
-          ) : (
-            <View className="flex-1">
-              <View className="flex flex-col gap-5">
-                <Text className="text-xl font-bold text-white">Popular</Text>
-
-                <FlatList
-                  data={movies}
-                  renderItem={({ item }) => <MovieCard {...item} horizontal />}
-                  keyExtractor={(item) => item.id.toString()}
-                  horizontal
-                  showsHorizontalScrollIndicator={false}
-                  ItemSeparatorComponent={() => <View className="w-4" />}
-                  className="mb-4"
-                />
-              </View>
-            </View>
-          )}
-
-          {moviesLoading ? (
-            <ActivityIndicator
-              size="large"
-              color="#8486ED"
-              className="mt-10 self-center"
-            />
-          ) : moviesError ? (
-            <Text> Error: {moviesError?.message} </Text>
-          ) : (
-            <View className="flex-1">
-              <View className="flex flex-col gap-5">
-                <Text className="text-xl font-bold text-white">Top Rated</Text>
-
-                <FlatList
-                  data={movies}
-                  renderItem={({ item }) => <MovieCard {...item} horizontal />}
-                  keyExtractor={(item) => item.id.toString()}
-                  horizontal
-                  showsHorizontalScrollIndicator={false}
-                  ItemSeparatorComponent={() => <View className="w-4" />}
-                  className="mb-4"
-                />
-              </View>
-            </View>
-          )}
-
-          {moviesLoading ? (
-            <ActivityIndicator
-              size="large"
-              color="#8486ED"
-              className="mt-10 self-center"
-            />
-          ) : moviesError ? (
-            <Text> Error: {moviesError?.message} </Text>
-          ) : (
-            <View className="flex-1">
-              <View className="flex flex-col gap-5">
-                <Text className="text-xl font-bold text-white">Upcoming</Text>
-
                 <FlatList
                   data={movies}
                   renderItem={({ item }) => <MovieCard {...item} horizontal />}
