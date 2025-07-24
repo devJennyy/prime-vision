@@ -5,14 +5,7 @@ import { fetchMovies } from "@/services/api";
 import useFetch from "@/services/useFetch";
 import { useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import {
-  ActivityIndicator,
-  FlatList,
-  Image,
-  ScrollView,
-  Text,
-  View,
-} from "react-native";
+import { FlatList, Image, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import "../globals.css";
 
@@ -55,28 +48,20 @@ export default function Index() {
         <HeroCarousel />
 
         <View className="w-full flex flex-col gap-5 px-5 mt-8">
-          {moviesLoading ? (
-            <ActivityIndicator
-              size="large"
-              color="#8486ED"
-              className="mt-10 self-center"
-            />
-          ) : moviesError ? (
-            <Text> Error: {moviesError?.message} </Text>
+          {moviesError ? (
+            <Text className="text-red-500">Error: {moviesError.message}</Text>
           ) : (
-            <View className="flex-1">
-              <View className="flex flex-col gap-5">
-                <Text className="text-xl font-bold text-white">For you</Text>
-                <FlatList
-                  data={movies}
-                  renderItem={({ item }) => <MovieCard {...item} horizontal />}
-                  keyExtractor={(item) => item.id.toString()}
-                  horizontal
-                  showsHorizontalScrollIndicator={false}
-                  ItemSeparatorComponent={() => <View className="w-4" />}
-                  className="mb-4"
-                />
-              </View>
+            <View className="flex flex-col gap-5">
+              <Text className="text-xl font-bold text-white">For you</Text>
+              <FlatList
+                data={movies}
+                renderItem={({ item }) => <MovieCard {...item} horizontal />}
+                keyExtractor={(item) => item.id.toString()}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                ItemSeparatorComponent={() => <View className="w-4" />}
+                className="mb-4"
+              />
             </View>
           )}
         </View>

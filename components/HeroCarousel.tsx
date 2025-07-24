@@ -1,9 +1,9 @@
 import { fetchMovies } from "@/services/api";
 import useFetch from "@/services/useFetch";
 import { useRouter } from "expo-router";
+import { Skeleton } from "moti/skeleton";
 import React, { useEffect, useRef, useState } from "react";
 import {
-  ActivityIndicator,
   Animated,
   Dimensions,
   Image,
@@ -16,7 +16,7 @@ import "../app/globals.css";
 
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 const ITEM_WIDTH = 210;
-const SPACING = 1;
+const SPACING = 10;
 const FULL_ITEM_WIDTH = ITEM_WIDTH + SPACING;
 
 const GENRE_MAP: { [key: number]: string } = {
@@ -24,9 +24,21 @@ const GENRE_MAP: { [key: number]: string } = {
   12: "Adventure",
   16: "Animation",
   35: "Comedy",
+  80: "Crime",
+  99: "Documentary",
   18: "Drama",
+  10751: "Family",
+  14: "Fantasy",
+  36: "History",
   27: "Horror",
+  10402: "Music",
+  9648: "Mystery",
   10749: "Romance",
+  878: "Science Fiction",
+  10770: "TV Movie",
+  53: "Thriller",
+  10752: "War",
+  37: "Western",
 };
 
 export default function HeroCarousel() {
@@ -36,10 +48,80 @@ export default function HeroCarousel() {
     error: moviesError,
   } = useFetch(() => fetchMovies({ query: "" }));
 
+  const [showSkeleton, setShowSkeleton] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowSkeleton(false);
+    }, 2500);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
     <View style={styles.container}>
-      {moviesLoading ? (
-        <ActivityIndicator size="large" color="#8486ED" style={styles.loader} />
+      {moviesLoading || showSkeleton ? (
+        <View style={styles.loadingContainer}>
+          <View style={styles.loadingWrapper}>
+            <Skeleton
+              show={true}
+              height={260}
+              width={ITEM_WIDTH}
+              radius={20}
+              colorMode="light"
+              backgroundColor="#030812"
+              transition={{ type: "timing" }}
+              colors={["#171B33", "#3842A8", "#171B33"]}
+            />
+
+            <Skeleton
+              show={true}
+              height={290}
+              width={ITEM_WIDTH}
+              radius={20}
+              colorMode="light"
+              backgroundColor="#030812"
+              transition={{ type: "timing" }}
+              colors={["#171B33", "#3842A8", "#171B33"]}
+            />
+
+            <Skeleton
+              show={true}
+              height={260}
+              width={ITEM_WIDTH}
+              radius={20}
+              colorMode="light"
+              backgroundColor="#030812"
+              transition={{ type: "timing" }}
+              colors={["#171B33", "#3842A8", "#171B33"]}
+            />
+          </View>
+          <View style={{ marginTop: 20 }}>
+            <Skeleton
+              show={true}
+              width={160}
+              height={30}
+              radius={99}
+              colorMode="light"
+              backgroundColor="#030812"
+              colors={["#171B33", "#3842A8", "#171B33"]}
+              transition={{ type: "timing" }}
+            />
+          </View>
+
+          <View>
+            <Skeleton
+              show={true}
+              width={100}
+              height={20}
+              radius={10}
+              colorMode="light"
+              backgroundColor="#030812"
+              colors={["#171B33", "#3842A8", "#171B33"]}
+              transition={{ type: "timing" }}
+            />
+          </View>
+        </View>
       ) : moviesError ? (
         <Text style={styles.errorText}>Error: {moviesError?.message}</Text>
       ) : (
@@ -150,7 +232,7 @@ function Carousel({ movies }: { movies: any[] }) {
 
           const scale = scrollX.interpolate({
             inputRange,
-            outputRange: [0.8, 1, 0.8],
+            outputRange: [0.9, 1, 0.9],
             extrapolate: "clamp",
           });
 
@@ -247,7 +329,7 @@ const styles = StyleSheet.create({
   },
   card: {
     width: ITEM_WIDTH,
-    height: 280,
+    height: 290,
     backgroundColor: "#2c2c54",
     borderRadius: 20,
     overflow: "hidden",
@@ -281,7 +363,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 50,
     lineHeight: 25,
     textAlign: "center",
-    marginTop: 8,
+    marginTop: 5,
   },
   titleSmall: {
     fontSize: 16,
@@ -289,13 +371,27 @@ const styles = StyleSheet.create({
   genre: {
     color: "#ccc",
     fontSize: 14,
-    marginTop: 5,
     fontWeight: 500,
+    marginTop: 5,
   },
   itemWrapper: {
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",
+  },
+  loadingContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    gap: 10,
+    width: "100%",
+  },
+  loadingWrapper: {
+    width: 670,
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 20,
   },
 
   indicatorContainer: {
@@ -308,7 +404,7 @@ const styles = StyleSheet.create({
     width: 8,
     height: 7,
     borderRadius: 4,
-    backgroundColor: "#aaa",
+    backgroundColor: "#222647",
     marginHorizontal: 4,
   },
   activeIndicator: {

@@ -4,7 +4,7 @@ import { fetchMovies } from "@/services/api";
 import useFetch from "@/services/useFetch";
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
-import { ActivityIndicator, FlatList, Image, Text, View } from "react-native";
+import { FlatList, Image, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import "../globals.css";
 
@@ -12,39 +12,26 @@ const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const {
-    data: movies = [],
+    data: allMovies = [],
     loading,
     error,
-    refetch: loadMovies,
-    reset,
-  } = useFetch(() => fetchMovies({ query: searchQuery }), false);
+    refetch,
+  } = useFetch(() => fetchMovies({ query: searchQuery }), true);
 
-  const {
-    data: moviesEmpty,
-    loading: moviesLoadingEmpty,
-    error: moviesErrorEmpty,
-  } = useFetch(() =>
-    fetchMovies({
-      query: ""
-    })
-  );
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      refetch();
+    }, 500);
+
+    return () => clearTimeout(timeoutId);
+  }, [searchQuery]);
 
   const handleSearch = (text: string) => {
     setSearchQuery(text);
   };
 
-  useEffect(() => {
-    const timeoutId = setTimeout(async () => {
-      if (searchQuery.trim()) {
-        await loadMovies();
-
-      } else {
-        reset();
-      }
-    }, 500);
-
-    return () => clearTimeout(timeoutId);
-  }, [searchQuery]);
+  const isSearching = searchQuery.trim().length > 0;
+  const hasResults = Array.isArray(allMovies) && allMovies.length > 0;
 
   return (
     <SafeAreaView className="relative flex-1 bg-primary">
@@ -55,7 +42,7 @@ const Search = () => {
       <StatusBar style="light" />
 
       <FlatList
-        data={movies}
+        data={isSearching ? allMovies : []}
         renderItem={({ item }) => <MovieCard {...item} />}
         keyExtractor={(item) => item.id.toString()}
         numColumns={3}
@@ -85,64 +72,46 @@ const Search = () => {
               />
             </View>
 
-            {loading && (
-              <ActivityIndicator
-                size="large"
-                color="#8486ED"
-                className="my-3"
-              />
-            )}
-
             {error && (
               <Text className="text-red-500 px-5 my-3">
                 Error: {error.message}
               </Text>
             )}
 
-            {!loading &&
-              !error &&
-              searchQuery.trim() &&
-              movies?.length! > 0 && (
-                <Text className="text-xl text-white font-semibold mb-2">
-                  Search Results for{" "}
-                  <Text className="text-accent font-bold">{searchQuery}</Text>
-                </Text>
-              )}
+            {isSearching && hasResults && (
+              <Text className="text-xl text-white font-semibold mb-2">
+                Search Results for{" "}
+                <Text className="text-accent font-bold">{searchQuery}</Text>
+              </Text>
+            )}
           </>
         }
         ListEmptyComponent={
-          !loading && !error ? (
-
-              <Text className="text-center text-gray-500">
-                {searchQuery.trim() ? (
-                  "No movies found"
-                ) : (
-                  <View className="flex flex-col gap-5">
-                      <Text className="text-xl font-bold text-white">
-                        All Movies
-                      </Text>
-
-                      <FlatList
-                        data={moviesEmpty}
-                        renderItem={({ item }) => <MovieCard {...item} />}
-                        keyExtractor={(item) => item.id.toString()}
-                        numColumns={3}
-                        columnWrapperStyle={{
-                          justifyContent: "flex-start",
-                          gap: 16,
-                          paddingRight: 5,
-                          marginBottom: 10,
-                        }}
-                        contentContainerStyle={{
-                          paddingBottom: 80,
-                        }}
-                        showsVerticalScrollIndicator={false}
-                      />
-                  </View>
-                )}
-              </Text>
-     
-          ) : null
+          loading ? null : error ? null : isSearching ? (
+            <Text className="text-center text-gray-500 mt-5">
+              No movies found.
+            </Text>
+          ) : (
+            <View className="flex flex-col gap-5">
+              <Text className="text-xl font-bold text-white">All Movies</Text>
+              <FlatList
+                data={allMovies}
+                renderItem={({ item }) => <MovieCard {...item} />}
+                keyExtractor={(item) => item.id.toString()}
+                numColumns={3}
+                columnWrapperStyle={{
+                  justifyContent: "flex-start",
+                  gap: 16,
+                  paddingRight: 5,
+                  marginBottom: 10,
+                }}
+                contentContainerStyle={{
+                  paddingBottom: 80,
+                }}
+                showsVerticalScrollIndicator={false}
+              />
+            </View>
+          )
         }
       />
     </SafeAreaView>
