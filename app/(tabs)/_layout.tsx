@@ -1,3 +1,4 @@
+import { Asset } from "expo-asset";
 import { Tabs, usePathname, useRouter } from "expo-router";
 import LottieView from "lottie-react-native";
 import React, { useEffect, useRef, useState } from "react";
@@ -84,40 +85,40 @@ export default function RootLayout() {
   const [playCount, setPlayCount] = useState(0);
   const animationRef = useRef<LottieView>(null);
 
-  // useEffect(() => {
-  //   const preload = async () => {
-  //     try {
-  //       const images = Object.values(TAB_BACKGROUNDS);
-  //       await Asset.loadAsync(images);
-  //     } catch (e) {
-  //       console.warn("Asset preload error:", e);
-  //     }
-  //   };
-  //   preload();
-  // }, []);
+  useEffect(() => {
+    const preload = async () => {
+      try {
+        const images = Object.values(TAB_BACKGROUNDS);
+        await Asset.loadAsync(images);
+      } catch (e) {
+        console.warn("Asset preload error:", e);
+      }
+    };
+    preload();
+  }, []);
 
-  // useEffect(() => {
-  //   if (playCount === 1) {
-  //     animationRef.current?.play();
-  //   } else if (playCount === 2) {
-  //     setShowTabs(true);
-  //   }
-  // }, [playCount]);
+  useEffect(() => {
+    if (playCount === 1) {
+      animationRef.current?.play();
+    } else if (playCount === 2) {
+      setShowTabs(true);
+    }
+  }, [playCount]);
 
-  // if (!showTabs) {
-  //   return (
-  //     <View style={styles.loadingContainer}>
-  //       <LottieView
-  //         ref={animationRef}
-  //         source={require("../../assets/animations/loading.json")}
-  //         autoPlay
-  //         loop={false}
-  //         onAnimationFinish={() => setPlayCount((prev) => prev + 1)}
-  //         style={{ width: 200, height: 200 }}
-  //       />
-  //     </View>
-  //   );
-  // }
+  if (!showTabs) {
+    return (
+      <View style={styles.loadingContainer}>
+        <LottieView
+          ref={animationRef}
+          source={require("../../assets/animations/loading.json")}
+          autoPlay
+          loop={false}
+          onAnimationFinish={() => setPlayCount((prev) => prev + 1)}
+          style={{ width: 200, height: 200 }}
+        />
+      </View>
+    );
+  }
 
   return (
     <View style={{ flex: 1 }}>

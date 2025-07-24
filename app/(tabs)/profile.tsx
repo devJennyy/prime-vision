@@ -1,25 +1,50 @@
+import { useUser } from "@/context/UserContext";
+import * as ImagePicker from "expo-image-picker";
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  Image,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
+} from "react-native";
 
 const Profile = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [displayName, setDisplayName] = useState("Your name here");
-
+  const { displayName, setDisplayName, setProfileImage, profileImage } = useUser();
   const [submitted, setSubmitted] = useState(false);
 
-  const nameRegex = /^[A-Za-z\s]*$/; // only letters and spaces
+  const nameRegex = /^[A-Za-z\s]*$/;
 
   const handleUpdate = () => {
     setSubmitted(true);
-
     if (!firstName || !lastName) return;
-
     if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) return;
 
     const fullName = `${firstName} ${lastName}`.trim();
     setDisplayName(fullName || "Your name here");
+  };
+
+  const pickImage = async () => {
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (status !== "granted") {
+      Alert.alert("Permission required", "We need access to your photos.");
+      return;
+    }
+
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setProfileImage(result.assets[0].uri);
+    }
   };
 
   const isFirstNameInvalid =
@@ -35,20 +60,28 @@ const Profile = () => {
         <Image
           source={require("../../assets/images/background-profile.png")}
           className="w-full h-[76px] absolute top-20"
-          resizeMode="cover"
+          resizeMode="contain"
         />
+
         <View className="relative mt-32">
           <View className="border-2 border-accent p-2 rounded-full">
-            <View className="bg-white rounded-full">
+            <View className="bg-white rounded-full w-44 h-44">
               <Image
-                source={require("../../assets/images/default-avatar.jpg")}
-                className="w-44 h-44 rounded-full"
-                resizeMode="contain"
+                source={
+                  profileImage
+                    ? { uri: profileImage }
+                    : require("../../assets/images/default-avatar.jpg")
+                }
+                className="w-full h-full rounded-full"
+                resizeMode="cover"
               />
             </View>
           </View>
 
-          <View className="bg-white p-[2px] rounded-full absolute bottom-2 right-2">
+          <TouchableOpacity
+            onPress={pickImage}
+            className="bg-white p-[2px] rounded-full absolute bottom-2 right-2"
+          >
             <View className="flex justify-center items-center bg-accent p-2 rounded-full">
               <Image
                 source={require("../../assets/icons/camera.png")}
@@ -56,14 +89,15 @@ const Profile = () => {
                 resizeMode="contain"
               />
             </View>
-          </View>
+          </TouchableOpacity>
         </View>
 
-        <Text className="text-3xl font-bold text-white capitalize w-[75%] line-clamp-1">
+        <Text className="text-3xl font-bold text-white capitalize w-[75%] line-clamp-1 text-center">
           {displayName}
         </Text>
 
         <View className="w-11/12 gap-6 mt-5">
+          {/* First Name */}
           <View>
             <Text className="text-white mb-3">
               Name <Text className="text-red-500">*</Text>
@@ -87,6 +121,7 @@ const Profile = () => {
             )}
           </View>
 
+          {/* Last Name */}
           <View>
             <Text className="text-white mb-3">
               Last Name <Text className="text-red-500">*</Text>
@@ -110,6 +145,7 @@ const Profile = () => {
             )}
           </View>
 
+          {/* Update Button */}
           <TouchableOpacity
             className="bg-accent rounded-xl py-4 mt-4"
             onPress={handleUpdate}

@@ -1,11 +1,14 @@
 import BottomSheet from "@/components/BottomSheet";
+import { useUser } from "@/context/UserContext";
 import { LinearGradient } from "expo-linear-gradient";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-const saved = () => {
+const Saved = () => {
+  const { displayName, profileImage } = useUser();
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View style={styles.container}>
@@ -21,15 +24,19 @@ const saved = () => {
           <View className="border border-accent p-[6px] rounded-[2.3rem]">
             <View className="w-32 h-32 bg-white rounded-[2rem]">
               <Image
-                source={require("../../assets/images/default-avatar.jpg")}
+                source={
+                  profileImage
+                    ? { uri: profileImage }
+                    : require("../../assets/images/default-avatar.jpg")
+                }
                 className="w-32 h-32 rounded-[2rem]"
-                resizeMode="contain"
+                resizeMode="cover"
               />
             </View>
           </View>
 
           <Text className="text-3xl font-bold text-white capitalize">
-            Your name Here
+            {displayName}
           </Text>
 
           <View className="flex flex-row justify-between items-center w-full px-10 mt-4">
@@ -69,7 +76,7 @@ const saved = () => {
   );
 };
 
-export default saved;
+export default Saved;
 
 const styles = StyleSheet.create({
   container: {
