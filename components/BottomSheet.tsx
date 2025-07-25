@@ -1,31 +1,27 @@
 import { fetchMovies } from "@/services/api";
 import useFetch from "@/services/useFetch";
-import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
-    Dimensions,
-    FlatList,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  Dimensions,
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
-    useAnimatedStyle,
-    useSharedValue,
-    withSpring,
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
 } from "react-native-reanimated";
 import MovieCard from "./MovieCard";
 
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 
 const BottomSheet = () => {
-  const router = useRouter();
-
   const {
     data: movies,
-    loading: moviesLoading,
     error: moviesError,
   } = useFetch(() =>
     fetchMovies({

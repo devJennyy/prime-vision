@@ -1,15 +1,28 @@
 import MovieCard from "@/components/MovieCard";
 import SearchBar from "@/components/SearchBar";
-import { fetchMovies } from "@/services/api";
+import { fetchDiscover, fetchMovies } from "@/services/api";
 import useFetch from "@/services/useFetch";
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
-import { FlatList, Image, Text, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import "../globals.css";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const { data: discoverMovies } = useFetch(() => fetchDiscover());
+  const [visibleCount, setVisibleCount] = useState(9);
+  const loadMoreMovies = () => {
+    setVisibleCount((prev) => prev + 9);
+  };
+  const visibleMovies = discoverMovies?.slice(0, visibleCount) || [];
 
   const {
     data: allMovies = [],
@@ -93,9 +106,11 @@ const Search = () => {
             </Text>
           ) : (
             <View className="flex flex-col gap-5">
-              <Text className="text-xl font-bold text-white">All Movies</Text>
+              <Text className="text-xl font-bold text-white">
+                Discover Movies
+              </Text>
               <FlatList
-                data={allMovies}
+                data={visibleMovies}
                 renderItem={({ item }) => <MovieCard {...item} />}
                 keyExtractor={(item) => item.id.toString()}
                 numColumns={3}
@@ -109,6 +124,16 @@ const Search = () => {
                   paddingBottom: 80,
                 }}
                 showsVerticalScrollIndicator={false}
+                ListFooterComponent={
+                  visibleMovies.length < (discoverMovies?.length || 0) ? (
+                    <TouchableOpacity
+                      onPress={loadMoreMovies}
+                      style={styles.button}
+                    >
+                      <Text style={styles.buttonText}>Load More</Text>
+                    </TouchableOpacity>
+                  ) : null
+                }
               />
             </View>
           )
@@ -119,3 +144,19 @@ const Search = () => {
 };
 
 export default Search;
+
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: "#1C1C3A",
+    paddingVertical: 10,
+    paddingHorizontal: 22,
+    borderRadius: 8,
+    alignSelf: "center",
+    marginTop: 20,
+  },
+  buttonText: {
+    color: "#8486ED",
+    fontWeight: "bold",
+    fontSize: 14,
+  },
+});

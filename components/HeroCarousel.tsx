@@ -232,7 +232,7 @@ function Carousel({ movies }: { movies: any[] }) {
 
           const scale = scrollX.interpolate({
             inputRange,
-            outputRange: [0.9, 1, 0.9],
+            outputRange: [0.8, 1, 0.8],
             extrapolate: "clamp",
           });
 

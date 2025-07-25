@@ -27,6 +27,77 @@ export const fetchMovies = async ({ query }: { query: string }) => {
   return data.results;
 };
 
+export const fetchNowPlaying = async () => {
+  const endpoint = `${TMDB_CONFIG.BASE_URL}movie/now_playing`
+
+  const response = await fetch(endpoint, {
+    method: "GET",
+    headers: TMDB_CONFIG.headers,
+  });
+
+  if (!response.ok) {
+    // @ts-ignore
+    throw new Error("Failed to fetch movies", response.statusText);
+  }
+
+  const data = await response.json();
+
+  return data.results;
+};
+
+export const fetchTopRated = async () => {
+  const endpoint = `${TMDB_CONFIG.BASE_URL}movie/top_rated`
+
+  const response = await fetch(endpoint, {
+    method: "GET",
+    headers: TMDB_CONFIG.headers,
+  });
+
+  if (!response.ok) {
+    // @ts-ignore
+    throw new Error("Failed to fetch movies", response.statusText);
+  }
+
+  const data = await response.json();
+
+  return data.results;
+};
+
+export const fetchUpcoming = async () => {
+  const endpoint = `${TMDB_CONFIG.BASE_URL}movie/upcoming`
+
+  const response = await fetch(endpoint, {
+    method: "GET",
+    headers: TMDB_CONFIG.headers,
+  });
+
+  if (!response.ok) {
+    // @ts-ignore
+    throw new Error("Failed to fetch movies", response.statusText);
+  }
+
+  const data = await response.json();
+
+  return data.results;
+};
+
+export const fetchDiscover = async () => {
+  const endpoint = `${TMDB_CONFIG.BASE_URL}trending/all/week`
+
+  const response = await fetch(endpoint, {
+    method: "GET",
+    headers: TMDB_CONFIG.headers,
+  });
+
+  if (!response.ok) {
+    // @ts-ignore
+    throw new Error("Failed to fetch movies", response.statusText);
+  }
+
+  const data = await response.json();
+
+  return data.results;
+};
 
 export const fetchMovieDetails = async (
   movieId: string

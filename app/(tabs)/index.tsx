@@ -1,7 +1,7 @@
 import HeroCarousel from "@/components/HeroCarousel";
 import MovieCard from "@/components/MovieCard";
 import SearchBar from "@/components/SearchBar";
-import { fetchMovies } from "@/services/api";
+import { fetchMovies, fetchNowPlaying, fetchTopRated, fetchUpcoming } from "@/services/api";
 import useFetch from "@/services/useFetch";
 import { useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
@@ -14,12 +14,32 @@ export default function Index() {
 
   const {
     data: movies,
-    loading: moviesLoading,
     error: moviesError,
   } = useFetch(() =>
     fetchMovies({
       query: "",
     })
+  );
+
+  const {
+    data: nowPlayingMovies,
+    error: nowPlayingMoviesError,
+  } = useFetch(() =>
+    fetchNowPlaying()
+  );
+
+  const {
+    data: topRatedMovies,
+    error: topRatedMoviesError,
+  } = useFetch(() =>
+    fetchTopRated()
+  );
+
+   const {
+    data: upcomingMovies,
+    error: upcomingMoviesError,
+  } = useFetch(() =>
+    fetchUpcoming()
   );
 
   return (
@@ -48,13 +68,70 @@ export default function Index() {
         <HeroCarousel />
 
         <View className="w-full flex flex-col gap-5 px-5 mt-8">
+          {nowPlayingMoviesError ? (
+            <Text className="text-red-500">Error: {nowPlayingMoviesError.message}</Text>
+          ) : (
+            <View className="flex flex-col gap-5">
+              <Text className="text-xl font-bold text-white">For you</Text>
+              <FlatList
+                data={(nowPlayingMovies || []).slice(13)}
+                renderItem={({ item }) => <MovieCard {...item} horizontal />}
+                keyExtractor={(item) => item.id.toString()}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                ItemSeparatorComponent={() => <View className="w-4" />}
+                className="mb-4"
+              />
+            </View>
+          )}
+        </View>
+
+        <View className="w-full flex flex-col gap-5 px-5 mt-8">
           {moviesError ? (
             <Text className="text-red-500">Error: {moviesError.message}</Text>
           ) : (
             <View className="flex flex-col gap-5">
               <Text className="text-xl font-bold text-white">For you</Text>
               <FlatList
-                data={movies}
+                data={(movies || []).slice(5)}
+                renderItem={({ item }) => <MovieCard {...item} horizontal />}
+                keyExtractor={(item) => item.id.toString()}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                ItemSeparatorComponent={() => <View className="w-4" />}
+                className="mb-4"
+              />
+            </View>
+          )}
+        </View>
+
+        <View className="w-full flex flex-col gap-5 px-5 mt-5">
+          {topRatedMoviesError ? (
+            <Text className="text-red-500">Error: {topRatedMoviesError.message}</Text>
+          ) : (
+            <View className="flex flex-col gap-5">
+              <Text className="text-xl font-bold text-white">Top Rated</Text>
+              <FlatList
+                data={topRatedMovies}
+                renderItem={({ item }) => <MovieCard {...item} horizontal />}
+                keyExtractor={(item) => item.id.toString()}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                ItemSeparatorComponent={() => <View className="w-4" />}
+                className="mb-4"
+              />
+            </View>
+          )}
+        </View>
+
+         <View className="w-full flex flex-col gap-5 px-5 mt-5">
+          {upcomingMoviesError ? (
+            <Text className="text-red-500">Error: {upcomingMoviesError.message}</Text>
+          ) : (
+            <View className="flex flex-col gap-5">
+              <Text className="text-xl font-bold text-white">Upcoming</Text>
+              <FlatList
+                data={upcomingMovies}
                 renderItem={({ item }) => <MovieCard {...item} horizontal />}
                 keyExtractor={(item) => item.id.toString()}
                 horizontal

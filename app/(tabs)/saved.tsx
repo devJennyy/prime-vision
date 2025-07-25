@@ -70,6 +70,7 @@ const Saved = () => {
             className="w-full h-1/2 z-[-1]"
           ></LinearGradient>
         </View>
+        
         <BottomSheet />
       </View>
     </GestureHandlerRootView>

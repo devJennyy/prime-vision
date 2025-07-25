@@ -28,7 +28,6 @@ const MovieDetails = () => {
 
   const {
     data: movies,
-    loading: moviesLoading,
     error: moviesError,
   } = useFetch(() =>
     fetchMovies({
@@ -38,8 +37,6 @@ const MovieDetails = () => {
 
   const {
     data: movieDetails,
-    loading: detailsLoading,
-    error: detailsError,
   } = useFetch(() => {
     if (!id) return Promise.reject(new Error("No movie id provided"));
     return fetchMovieDetails(id);
@@ -48,7 +45,6 @@ const MovieDetails = () => {
   const {
     data: movieTrailer,
     loading: trailerLoading,
-    error: trailerError,
   } = useFetch(() => {
     if (!id) return Promise.reject(new Error("No movie id provided"));
     return fetchMovieTrailer(id);
@@ -69,11 +65,11 @@ const MovieDetails = () => {
       <View className="absolute top-5 right-4 z-50">
         <TouchableOpacity
           onPress={() => router.back()}
-          className="p-2 rounded-full bg-black"
+          className="p-[10px] rounded-full bg-black/50"
         >
           <Image
             source={require("../../assets/icons/close.png")}
-            className="w-4 h-4"
+            className="w-[14px] h-[14px]"
             resizeMode="contain"
           />
         </TouchableOpacity>

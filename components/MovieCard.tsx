@@ -7,6 +7,7 @@ type MovieCardProps = {
   id: number;
   poster_path: string | null;
   title: string;
+  original_title?: string;
   release_date: string;
   horizontal?: boolean;
 };
@@ -15,11 +16,11 @@ const MovieCard = ({
   id,
   poster_path,
   title,
+  original_title,
   release_date,
   horizontal = false,
 }: MovieCardProps) => {
   const imageClass = horizontal ? "w-32" : "w-full";
-
   const [showSkeleton, setShowSkeleton] = useState(true);
 
   useEffect(() => {
@@ -51,7 +52,7 @@ const MovieCard = ({
                 ? { uri: `https://image.tmdb.org/t/p/w500${poster_path}` }
                 : require("../assets/images/no-image-found.png")
             }
-            className={`${imageClass} rounded-lg h-52`}
+            className={`${imageClass} rounded-lg h-52 z-0`}
             resizeMode="cover"
           />
         )}
@@ -70,7 +71,7 @@ const MovieCard = ({
             />
           ) : (
             <Text className="text-sm font-bold text-white line-clamp-1">
-              {title}
+              {title || original_title || "Coming Soon"}
             </Text>
           )}
         </View>
@@ -89,7 +90,7 @@ const MovieCard = ({
             />
           ) : (
             <Text className="text-[10px] font-bold text-muted/50">
-              {release_date.slice(0, 4)}
+              {release_date?.slice(0, 4) || "To be announced"}
             </Text>
           )}
         </View>

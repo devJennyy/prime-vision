@@ -97,7 +97,6 @@ const Profile = () => {
         </Text>
 
         <View className="w-11/12 gap-6 mt-5">
-          {/* First Name */}
           <View>
             <Text className="text-white mb-3">
               Name <Text className="text-red-500">*</Text>
@@ -121,7 +120,6 @@ const Profile = () => {
             )}
           </View>
 
-          {/* Last Name */}
           <View>
             <Text className="text-white mb-3">
               Last Name <Text className="text-red-500">*</Text>
@@ -145,7 +143,6 @@ const Profile = () => {
             )}
           </View>
 
-          {/* Update Button */}
           <TouchableOpacity
             className="bg-accent rounded-xl py-4 mt-4"
             onPress={handleUpdate}
