@@ -7,7 +7,7 @@ import {
   fetchMovieTrailer,
 } from "@/services/api";
 import useFetch from "@/services/useFetch";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import LottieView from "lottie-react-native";
 import React, { useEffect, useState } from "react";
 import {
@@ -20,6 +20,7 @@ import {
 } from "react-native";
 
 const MovieDetails = () => {
+  const router = useRouter();
   const params = useLocalSearchParams();
   const id = Array.isArray(params.id) ? params.id[0] : params.id;
   const [trailerObj, setTrailerObj] = useState<any>(null);
@@ -65,6 +66,19 @@ const MovieDetails = () => {
 
   const renderHeader = () => (
     <View className="pt-3 pb-5">
+      <View className="absolute top-5 right-4 z-50">
+        <TouchableOpacity
+          onPress={() => router.back()}
+          className="p-2 rounded-full bg-black"
+        >
+          <Image
+            source={require("../../assets/icons/close.png")}
+            className="w-4 h-4"
+            resizeMode="contain"
+          />
+        </TouchableOpacity>
+      </View>
+
       {trailerObj ? (
         <YouTubePlayer videoId={trailerObj?.key} autoPlay={isTrailerPlaying} />
       ) : (
@@ -81,11 +95,11 @@ const MovieDetails = () => {
           {movieDetails?.title}
         </Text>
         <View className="flex-row items-center gap-x-1">
-            <Text className="text-white text-sm">
-              {movieDetails?.release_date?.split("-")[0]} •
-            </Text>
-            <Text className="text-white text-sm">{movieDetails?.runtime}m</Text>
-          </View>
+          <Text className="text-white text-sm">
+            {movieDetails?.release_date?.split("-")[0]} •
+          </Text>
+          <Text className="text-white text-sm">{movieDetails?.runtime}m</Text>
+        </View>
       </View>
 
       <View className="flex flex-col gap-[9px] px-4">
@@ -127,10 +141,13 @@ const MovieDetails = () => {
           {movieDetails?.overview}
         </Text>
 
-          <Text className="text-muted/60 leading-5 text-sm font-medium">
-           Genres: {movieDetails?.genres?.slice(0, 2).map((g: any) => g.name).join(", ")}
-          </Text>
-       
+        <Text className="text-muted/60 leading-5 text-sm font-medium">
+          Genres:{" "}
+          {movieDetails?.genres
+            ?.slice(0, 2)
+            .map((g: any) => g.name)
+            .join(", ")}
+        </Text>
       </View>
 
       <View className="flex flex-row justify-between items-center mt-10 gap-12 px-4">
