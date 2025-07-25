@@ -39,7 +39,7 @@ const Saved = () => {
             {displayName}
           </Text>
 
-          <View className="flex flex-row justify-between items-center w-full px-10 mt-4">
+          <View className="flex flex-row justify-between items-center w-full px-10 mt-2">
             <View className="flex flex-col gap-1 justify-center items-center">
               <Text className="text-white text-3xl font-bold">47</Text>
               <Text className="text-muted/70 font-medium text-base tracking-wide">
