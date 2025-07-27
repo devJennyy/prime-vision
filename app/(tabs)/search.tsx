@@ -92,7 +92,7 @@ const Search = () => {
             )}
 
             {isSearching && hasResults && (
-              <Text className="text-xl text-white font-semibold mb-2">
+              <Text className="text-xl text-white font-semibold mb-2 mt-[-10px]">
                 Search Results for{" "}
                 <Text className="text-accent font-bold">{searchQuery}</Text>
               </Text>
