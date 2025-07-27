@@ -1,50 +1,68 @@
-# Welcome to your Expo app 👋
+<div align="center">
+  <br />
+    <a href="https://kawaii-verse.vercel.app/" target="_blank">
+      <img src="https://github.com/devJennyy/prime-vision/blob/master/assets/images/mockup.png" alt="Project Banner">
+    </a>
+  <br />
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+  <div>
+    <img src="https://img.shields.io/badge/-React_Native-black?style=for-the-badge&logoColor=white&logo=react&color=61DAFB" alt="React Native" />
+    <img src="https://img.shields.io/badge/-Expo-black?style=for-the-badge&logoColor=white&logo=expo&color=000020" alt="Expo" />
+    <img src="https://img.shields.io/badge/-TypeScript-black?style=for-the-badge&logoColor=white&logo=typescript&color=3178C6" alt="TypeScript" />
+    <img src="https://img.shields.io/badge/-Tailwind_CSS-black?style=for-the-badge&logoColor=white&logo=tailwindcss&color=06B6D4" alt="Tailwind CSS" />
+  </div>
 
-## Get started
+  <h3 align="center" >
+    <img src="https://github.com/devJennyy/kawaii-verse-revamp/blob/main/public/logo/logo-text.svg">
+  </h3>
 
-1. Install dependencies
+  <div align="center">
+    Prime Vision is a cross-platform mobile app that runs smoothly on both iOS and Android. It allows users to explore movies, search by title, watch trailers, and view detailed information all in one place.
+    Movie data is powered by 
+     <a href="https://developer.themoviedb.org/docs/getting-started">
+       <img src="https://img.shields.io/badge/TMDB_API-100000?style=flat&logoColor=white&color=01B4E4" alt="TMDB API" />
+     </a>
+    and fetched in real time using the native Fetch API, allowing users to browse trending titles and discover what’s popular as it updates. With a clean, minimal UI and intuitive experience, Prime Vision offers a seamless movie-browsing experience on the go.
+  </div>
+  </br>
+</div>
 
-   ```bash
-   npm install
-   ```
+## ⚙️ Tech Stack
 
-2. Start the app
+| 🛠️ Development                                                   | 🎨 UI & Styling        | 🌀 Animation                          | 🪶 Design |
+|------------------------------------------------------------------|-------------------------|---------------------------------------|------------|
+| React Native                                                     | TailwindCSS             | Moti                                  | Figma      |
+| Expo                                                             | NativeWind              | Lottie                                |            |
+| TypeScript                                                       |                         | React Native Reanimated               |            |
+| Image Picker                                                     |                         | React Native Gesture Handler          |            |
+| [TMDB API](https://developer.themoviedb.org/docs/getting-started) |                         |                                       |            |
 
-   ```bash
-   npx expo start
-   ```
 
-In the output, you'll find options to open the app in a
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## <a name="quick-start">⚡ Commands </a>
 
-## Get a fresh project
-
-When you're ready, run:
+1. Install dependencies:
 
 ```bash
-npm run reset-project
+npm i
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. Start the development server:
 
-## Learn more
+```bash
+npx expo start --tunnel 
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+3. Start the development server:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+npx expo run:android     # Run on Android device/emulator
+npx expo run:ios         # Run on iOS simulator (macOS only)
+npx expo start --web     # Run in web browser (if supported) 
+```
 
-## Join the community
+##
+> **Designed and Developed by [@devjenny](https://devjenny-portfolio-legacy.vercel.app/)**
 
-Join our community of developers creating universal apps.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
