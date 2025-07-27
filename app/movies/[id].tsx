@@ -25,27 +25,21 @@ const MovieDetails = () => {
   const id = Array.isArray(params.id) ? params.id[0] : params.id;
   const [trailerObj, setTrailerObj] = useState<any>(null);
   const [isTrailerPlaying, setIsTrailerPlaying] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const toggleExpanded = () => setExpanded((prev) => !prev);
 
-  const {
-    data: movies,
-    error: moviesError,
-  } = useFetch(() =>
+  const { data: movies, error: moviesError } = useFetch(() =>
     fetchMovies({
       query: "",
     })
   );
 
-  const {
-    data: movieDetails,
-  } = useFetch(() => {
+  const { data: movieDetails } = useFetch(() => {
     if (!id) return Promise.reject(new Error("No movie id provided"));
     return fetchMovieDetails(id);
   });
 
-  const {
-    data: movieTrailer,
-    loading: trailerLoading,
-  } = useFetch(() => {
+  const { data: movieTrailer, loading: trailerLoading } = useFetch(() => {
     if (!id) return Promise.reject(new Error("No movie id provided"));
     return fetchMovieTrailer(id);
   });
@@ -133,9 +127,35 @@ const MovieDetails = () => {
         <Text className="font-bold text-white text-base">
           {movieDetails?.original_title}
         </Text>
-        <Text className="text-white leading-5 text-sm font-medium">
-          {movieDetails?.overview}
-        </Text>
+
+        <View>
+          <Text
+            className="text-white leading-5 text-sm font-medium"
+            numberOfLines={expanded ? undefined : 3}
+          >
+            {movieDetails?.overview}
+          </Text>
+
+          {movieDetails?.overview &&
+            movieDetails.overview.length > 200 &&
+            !expanded && (
+              <TouchableOpacity onPress={toggleExpanded}>
+                <Text className="text-accent text-xs font-semibold mt-1">
+                  See more
+                </Text>
+              </TouchableOpacity>
+            )}
+
+          {movieDetails?.overview &&
+            movieDetails.overview.length > 200 &&
+            expanded && (
+              <TouchableOpacity onPress={toggleExpanded}>
+                <Text className="text-accent text-xs font-semibold mt-1">
+                  See less
+                </Text>
+              </TouchableOpacity>
+            )}
+        </View>
 
         <Text className="text-muted/60 leading-5 text-sm font-medium">
           Genres:{" "}

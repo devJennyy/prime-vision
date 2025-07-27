@@ -55,7 +55,7 @@ const Profile = () => {
   return (
     <View className="flex-1 justify-start items-center bg-primary">
       <StatusBar style="light" />
-
+      
       <View className="w-full flex flex-col justify-center items-center gap-7 z-10 relative">
         <Image
           source={require("../../assets/images/background-profile.png")}
